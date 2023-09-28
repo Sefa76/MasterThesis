@@ -1,0 +1,7 @@
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QOne could use this map of galaxies to define a density field\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is the volume of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q-space that each mode has and is given though\\E$"}
+{"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is the volume of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q-space that each mode has and is given through\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QThis chapter will be structured like this: First we will briefly explain how the observed power spectrum is extracted from the galaxy catalogue.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\QThis sections main source are the papers and and I will be citing these throughout\\E$"}
+{"rule":"SENTENCE_FRAGMENT","sentence":"^\\QSince the Extracting the Covariance from Theory.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe second advantage of this method is that to compute all derivatives one only needs to call the code \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q since the first order derivates of the observables can then be multiplied to find the second order derivates of the likelihood.\\E$"}
