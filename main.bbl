@@ -1,0 +1,101 @@
+\begin{thebibliography}{}
+
+\bibitem[Blas et~al., 2011]{Blas:2011rf}
+Blas, D., Lesgourgues, J., and Tram, T. (2011).
+\newblock {The Cosmic Linear Anisotropy Solving System (CLASS) II:
+  Approximation schemes}.
+\newblock {\em JCAP}, 07:034.
+
+\bibitem[Collaboration et~al., 2023]{euclidPhotoTanidis}
+Collaboration, E., Tanidis, K., et~al. (2023).
+\newblock Euclid preparation. tbd. the effect of linear redshift-space
+  distortions in photometric galaxy clustering and its cross-correlation with
+  cosmic shear.
+
+\bibitem[{Dolag} et~al., 2004]{2004A&A...416..853D}
+{Dolag}, K., {Bartelmann}, M., {Perrotta}, F., {Baccigalupi}, C., {Moscardini},
+  L., {Meneghetti}, M., and {Tormen}, G. (2004).
+\newblock {Numerical study of halo concentrations in dark-energy cosmologies}.
+\newblock 416:853--864.
+
+\bibitem[{Euclid Collaboration: Blanchard} et~al., 2020]{Euclid:2019clj}
+{Euclid Collaboration: Blanchard}, A. et~al. (2020).
+\newblock {Euclid preparation: VII. Forecast validation for Euclid cosmological
+  probes}.
+\newblock {\em Astron. Astrophys.}, 642:A191.
+
+\bibitem[{Euclid Collaboration: Blanchard} et~al., 2023]{casas2023euclid}
+{Euclid Collaboration: Blanchard}, A. et~al. (2023).
+\newblock Euclid: Validation of the montepython forecasting tools.
+
+\bibitem[Lesgourgues et~al., 2013]{lesgourgues_mangano_miele_pastor_2013}
+Lesgourgues, J., Mangano, G., Miele, G., and Pastor, S. (2013).
+\newblock {\em Neutrino Cosmology}.
+\newblock Cambridge University Press.
+
+\bibitem[Lewis, 2019]{Lewis:2019xzd}
+Lewis, A. (2019).
+\newblock {GetDist: a Python package for analysing Monte Carlo samples}.
+
+\bibitem[Lewis et~al., 2000]{Lewis:1999bs}
+Lewis, A., Challinor, A., and Lasenby, A. (2000).
+\newblock {Efficient computation of CMB anisotropies in closed FRW models}.
+\newblock {\em Astrophys. J.}, 538:473--476.
+
+\bibitem[Mead, 2016]{Mead_2016}
+Mead, A.~J. (2016).
+\newblock Spherical collapse, formation hysteresis and the deeply non-linear
+  cosmological power spectrum.
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  464(2):1282--1293.
+
+\bibitem[Mead et~al., 2021]{Mead:2020vgs}
+Mead, A.~J., Brieden, S., Tröster, T., and Heymans, C. (2021).
+\newblock {hmcode-2020: improved modelling of non-linear cosmological power
+  spectra with baryonic feedback}.
+\newblock {\em MNRAS}, 502(1):1401--1422.
+
+\bibitem[Nakamura and Suto, 1997]{Nakamura_1997}
+Nakamura, T.~T. and Suto, Y. (1997).
+\newblock Strong gravitational lensing and velocity function as tools to probe
+  cosmological parameters: Current constraints and future predictions.
+\newblock {\em Progress of Theoretical Physics}, 97(1):49--81.
+
+\bibitem[Navarro et~al., 1997]{Navarro_1997}
+Navarro, J.~F., Frenk, C.~S., and White, S. D.~M. (1997).
+\newblock A universal density profile from hierarchical clustering.
+\newblock {\em The Astrophysical Journal}, 490(2):493.
+
+\bibitem[{Press} and {Schechter}, 1974]{1974ApJ...187..425P}
+{Press}, W.~H. and {Schechter}, P. (1974).
+\newblock {Formation of Galaxies and Clusters of Galaxies by Self-Similar
+  Gravitational Condensation}.
+\newblock 187:425--438.
+
+\bibitem[Raccanelli et~al., 2018]{Raccanelli_2018}
+Raccanelli, A., Verde, L., and Villaescusa-Navarro, F. (2018).
+\newblock Biases from neutrino bias: to worry or not to worry?
+\newblock {\em Monthly Notices of the Royal Astronomical Society},
+  483(1):734--743.
+
+\bibitem[Takahashi et~al., 2020]{Takahashi:2019hth}
+Takahashi, R., Nishimichi, T., Namikawa, T., Taruya, A., Kayo, I., Osato, K.,
+  Kobayashi, Y., and Shirasaki, M. (2020).
+\newblock {Fitting the nonlinear matter bispectrum by the Halofit approach}.
+\newblock {\em ApJ}, 895(2):113.
+
+\bibitem[Vagnozzi et~al., 2018]{Vagnozzi:2018pwo}
+Vagnozzi, S., Brinckmann, T., Archidiacono, M., Freese, K., Gerbino, M.,
+  Lesgourgues, J., and Sprenger, T. (2018).
+\newblock {Bias due to neutrinos must not uncorrect'd go}.
+\newblock {\em JCAP}, 09:001.
+
+\bibitem[Villaescusa-Navarro et~al., 2014]{Villaescusa_Navarro_2014}
+Villaescusa-Navarro, F., Marulli, F., Viel, M., Branchini, E., Castorina, E.,
+  Sefusatti, E., and Saito, S. (2014).
+\newblock Cosmology with massive neutrinos i: towards a realistic modeling of
+  the relation between matter, haloes and galaxies.
+\newblock {\em Journal of Cosmology and Astroparticle Physics},
+  2014(03):011--011.
+
+\end{thebibliography}

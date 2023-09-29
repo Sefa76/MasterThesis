@@ -1,0 +1,76 @@
+\documentclass[oneside]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}   
+\usepackage{float}
+\usepackage[section]{placeins}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{mathtools}
+\usepackage[switch, mathlines]{lineno}
+\usepackage[usenames,dvipsnames]{xcolor} 
+\usepackage[normalem]{ulem}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{enumitem}
+\usepackage{csquotes}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{color, colortbl}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{graphicx}
+\usepackage{subfiles}
+% for writing code blocks 
+\usepackage{listings}
+%\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\definecolor{orange}{rgb}{1,0.5,0}
+\definecolor{darkorange}{rgb}{0.69,0.33,0.13}
+\definecolor{fidcol}{rgb}{0.7,0,0}
+\definecolor{mkcol}{rgb}{0.5,0,0.5}
+\definecolor{mmcol}{rgb}{0.7,0.17,0.31}
+\definecolor{dscol}{rgb}{0.6,0.1,0.2}
+\definecolor{mccol}{rgb}{0.2,0.4,0.6}
+\definecolor{darkgreen}{rgb}{0.05,0.5,0.06}
+\definecolor{carnelian}{rgb}{0.7, 0.11, 0.11}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+%table colors
+\definecolor{gray}{gray}{0.9}
+\definecolor{cyan}{rgb}{0.88,1,1}
+
+\newcommand*{\Euclid}{\textit{Euclid}\xspace}
+\newcommand*{\Planck}{\textit{Planck}\xspace}
+\newcommand*{\rd}{\mathrm{d}}
+\newcommand*{\rD}{\mathrm{D}}
+\newcommand*{\marktodo}{{\color{mmcol} ::TODO::}\xspace}
+\newcommand*{\halofit}{\texttt{HALOFIT}\xspace}
+\newcommand*{\hmcode}{\texttt{HMCODE}\xspace}
+\newcommand*{\montepython}{\texttt{MP}\xspace}
+\newcommand*{\cosmicfish}{\texttt{CF}\xspace}
+\newcommand*{\class}{{\tt CLASS}\xspace}
+\newcommand*{\camb}{{\tt CAMB}\xspace}
+\newcommand*{\montefisher}{\texttt{MP:Fisher}\xspace}
+
+\newcommand*{\neff}{N_\mathrm{eff}}
+\begin{document}
+\pagenumbering{roman}
+Ich versichere hiermit an Eides Statt, dass ich die vorliegende Masterarbeit selbstständig und ohne unzulässige fremde Hilfe erbracht habe. Ich habe keine anderen als die angegebenen Quellen und Hilfsmittel benutzt. Für den Fall, dass die Arbeit zusätzlich auf einem Datenträger eingereicht wird, erkläre ich, dass die schriftliche und die elektronische Form vollständig übereinstimmen. Die Arbeit hat in gleicher oder ähnlicher Form noch keiner Prüfungsbehörde vorgelegen. \\
+
+Aachen, den 29.09.2023
+\tableofcontents
+
+\pagenumbering{arabic}
+\subfile{Neutrinos/neutrinos}
+\subfile{nonlinear/nonlinear}
+\subfile{photo/photometric}
+\subfile{spectro/spectroscopic}
+\subfile{methodology/methodology}
+\subfile{validation/validation}
+\subfile{results/results}
+\bibliographystyle{apalike}
+\bibliography{main}
+\end{document}
