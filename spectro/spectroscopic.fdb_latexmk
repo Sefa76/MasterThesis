@@ -1,14 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1696005388 "/home/sefa/Schreibtisch/MasterThesis/spectro/spectroscopic.tex" "spectro/spectroscopic.pdf" "spectroscopic" 1696005389
+["pdflatex"] 1696029329 "/home/sefa/Schreibtisch/MasterThesis/spectro/spectroscopic.tex" "spectro/spectroscopic.pdf" "spectroscopic" 1696029330
   "/etc/texmf/web2c/texmf.cnf" 1664732471 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/sefa/Schreibtisch/MasterThesis/spectro/spectroscopic.tex" 1696005387 34185 550be231a2dc30f4e19f6495e4f68b1e ""
+  "/home/sefa/Schreibtisch/MasterThesis/spectro/spectroscopic.tex" 1696029328 34448 6976e4d65b2bab5c5534a3fc43278cad ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1136768653 3584 13049b61b922a28b158a38aeff75ee9b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx2074.tfm" 1136768653 3584 7666d038713b9e38abb5c2e0f6972188 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx2488.tfm" 1136768653 3584 0181dbc4d429c3ba4e30feba37b5df96 ""
-  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm" 1136768653 3584 178baad7ffca7f5d3428a83bd7cc64c3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm" 1136768653 3584 291a5713401683441e0a8c8f4417b17b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm" 1136768653 3584 cf973739aac7ab6247f9150296af7954 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm" 1136768653 3584 49064b465390a8e316a3c8417a050403 ""
@@ -235,10 +234,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1690967794 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1690967820 2800023 6ecfc0144d1539f4b7f3d25d48194b51 ""
-  "spectro/../main.tex" 1696002118 2731 451f415aea0211e1fa3dcb546848d04c ""
-  "spectro/spectroscopic.aux" 1696005388 3412 2c42f9b4abf53a7eb41d9635b054128d "pdflatex"
-  "spectro/spectroscopic.out" 1696005388 958 f7d8c6b101b7db2f64ecee655be24c78 "pdflatex"
-  "spectro/spectroscopic.tex" 1696005387 34185 550be231a2dc30f4e19f6495e4f68b1e ""
+  "spectro/../main.tex" 1696025090 2736 ed8ff6959ae9616b3b88f6c6eebab957 ""
+  "spectro/spectroscopic.aux" 1696029330 3491 64c47056c7d5785fa961127f969eea7a "pdflatex"
+  "spectro/spectroscopic.out" 1696029330 958 f7d8c6b101b7db2f64ecee655be24c78 "pdflatex"
+  "spectro/spectroscopic.tex" 1696029328 34448 6976e4d65b2bab5c5534a3fc43278cad ""
   (generated)
   "spectro/spectroscopic.aux"
   "spectro/spectroscopic.log"

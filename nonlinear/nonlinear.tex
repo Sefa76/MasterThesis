@@ -49,34 +49,35 @@
 
 
 \begin{document}
- \chapter{The Nonlinear Power Spectrum}\label{cha:NL}
-With the Euclid mission, we will be able to probe deeply the non-linear regime of the matter power spectrum. The non-linear power spectrum can not be calculated using just perturbation theory, so to predict the dynamics we would resort back to N-body simulations. As running such simulations are computationally expensive we have different codes to obtain the nonlinear power spectrum. In this work, we use two different codes called \halofit\cite{Mead:2020vgs} and \hmcode\cite{Takahashi:2019hth}. Both codes agree with each other on the level of ~6\% but at the level of the \Euclid mission's precision, this is already too much. We will show later on how the choice of the non-linear code will bias our parameter inference. Since \hmcode is better at matching N-body simulations of cosmologies with DE and massive Neutrinos than \halofit, we will use it for the forecast for the massive neutrinos while we will use \halofit for the forecast of modified gravity as the fitting formula was done with the power spectrum of \halofit as a pseudo.\\
-Both codes are based on the halo model to predict the non-linear power spectrum. In the first section we will go over the basics of the halo model.\\
-The codes differ in that \halofit is a direct functional fit of the power spectrum from the halo model. \hmcode on the other hand is a semi-analytical model where the individual ingredients of the halo model are fitted. They are then combined in the context of a modified halo model to better match N-body simulations. In the second section, we will then go over the implementation of \hmcode we used and explain where the critical modelling of massive neutrinos is important.\\
+ \chapter{The Nonlinear Matter Power Spectrum}\label{cha:NL}
+With the Euclid mission, we will be able to deeply probe the nonlinear regime of the matter power spectrum. The nonlinear power spectrum can not be calculated using perturbation theory, so to predict the dynamics we would resort to N-body simulations. As running such simulations are computationally expensive, we have different codes to obtain the nonlinear power spectrum. In this work, we use two different codes called \halofit\cite{Mead:2020vgs} and \hmcode\cite{Takahashi:2019hth}. Both codes agree with each other on the level of ~6\% but at the level of the \Euclid mission's forecast precision, this is already too much. We will show later on how the choice of the nonlinear code will bias our parameter inference. Since \hmcode is better at matching N-body simulations of cosmologies with dark energy and massive Neutrinos than \halofit, we will use it for the forecast for the massive neutrinos.\\
+We will however use \halofit for a forecast of modified gravity as the fitting formula of \cite{Winther_2019} was done with the power spectrum of \halofit as a pseudo. This means that in order to obtain the matter power spectrum in cosmologies with modified gravity, we do not need to solve the modified Einstein equations, but apply a multiplicative factor to the power spectrum to obtain the modified gravity nonlinear matter power spectrum. The difficulty remains in obtaining this so-called boost. For this, we need to employ N-body simulations where the modified gravity was already included.\\
+We will not go into further detail here, but for the thesis, we have added to our likelihood a setup to add any linear boost. This could not only be used for the modified gravity fitting formulas but also for example emulators for exotic particle dark matter models or baryonic feedback.\\
+Both \hmcode and \halofit are based on the halo model to predict the nonlinear power spectrum. In the first section of this chapter we will go over the basics of the halo model.\\
+The codes differ in that \halofit is a direct functional fit of the power spectrum from the halo model. \hmcode on the other hand is a semi-analytical model where the individual ingredients of the halo model are fitted. They are then combined in the context of a modified halo model to better match N-body simulations. In the second section of this chapter, we will then go over the implementation of \hmcode we used and explain where the critical modelling of massive neutrinos is important.\\
 
 \section{The Halo Model}\label{sec:halo_model}
-The halo model describes how the non-linear power spectrum is calculated using a sum of two terms 
+The halo model describes how the nonlinear power spectrum is calculated using a sum of two terms 
 \begin{equation}
     P_{mm}(k,z) = P^\mathrm{1h}(k,z) + P^\mathrm{2h}(k,z).
 \end{equation}
-The first "one halo term", $P^\mathrm{1h}(k,z)$, dominates at smaller scales and is calculated solely from the intrinsic properties of halos. The second term is called the "two-halo term", $P^\mathrm{2h}(k,z)$, it dominates at larger scales and describes the spacial correlation between two halos. To get to this point we will need to discuss how to extract a power spectrum from a density map.\\
-We start by stating that all the derivation is done at one point in time, but it is the time dependence can be added afterwards.
-The main assumption of the halo model is that the total matter field, $\rho$, can be written as a sum over different halos, i.e. all the matter is inside halos. 
-The second assumption is that the density profile of halos, $\rho_H$, is only a function of their mass,$M_i$ and the relative position to their centre, $\boldsymbol{x}_i$. These assumptions lead to 
+The first "one halo term", $P^\mathrm{1h}(k,z)$, dominates at smaller scales and is calculated solely from the intrinsic properties of halos. The second term is called the "two-halo term", $P^\mathrm{2h}(k,z)$. It dominates at larger scales and describes the spatial correlation between two halos. In the following, we will need to discuss how to extract a power spectrum from a density map.\\
+We start by stating that all the derivation is done at one point in time, but it is the time dependence can be added afterwards. The main assumption of the halo model is that the total matter field $\rho$ can be written as a sum over different halos, i.e. all the matter is inside halos. 
+The second assumption is that the density profile of halos, $\rho_H$, is only a function of their mass, $M_i$, and the relative position to their centre, $\boldsymbol{x}_i$. These assumptions lead to 
 \begin{equation}
 \label{eq:halo_denisity_field}
 \rho(\boldsymbol{x}) = \sum_i \rho(\boldsymbol{x}-\boldsymbol{x}_i,M_i)=\int \sum_i \delta(M'-M_i)\,\delta^{(3)}(\boldsymbol{x}'-\boldsymbol{x}_i)\,\rho_H(\boldsymbol{x}-\boldsymbol{x}',M')\, \rd^3 \boldsymbol{x}' \, \rd M'
 \end{equation}
 
-In the last step, we have artificially added a sum over Dirac-delta distributions to pull out the dependence on the particular realization of the universe out of the halo density profile. The sum in the integral itself can be understood as a random realization of an underlying probability density, $\langle \rd n/\rd M \rangle$, i.e., the number density per mass interval $M,M+\rd M$. This can be understood in the following way. Imagine that the universe is separated into small volume bins, $\delta V_i$, and mass bins, $\delta M_j$, such that in each bin there is only the centre of one halo with its mass in that particular mass bin. This would define a random variable $S^{ij}$ such that 
+In the last step, we have artificially added a sum over Dirac-delta distributions to pull out the dependence on the particular realization of the universe out of the halo density profile. The sum in the integral itself can be understood as a random realization of an underlying probability density, $\langle \rd n/\rd M \rangle$, i.e., the number density per mass interval $[M,\,M+\rd M]$. This can be understood in the following way. Imagine that the universe is separated into small volume bins, $\delta V_i$, and mass bins, $\delta M_j$, such that in each bin there is only the centre of one halo with its mass in that particular mass bin. This would define a random variable $S^{ij}$ such that 
 
 \begin{equation*}
 S^{ij} = \left\{ \begin{array}{ll}
-    1 & \text{when a halo is in the corresponding bins } ij \\
+    1 & \text{if a halo is in present the corresponding bins } ij \\
     0 & \, \textrm{otherwise} \\
     \end{array}  \right.    
 \end{equation*}
-The expectation value of this variable is given by the probability of finding a galaxy in this bin. One could either integrate the underlying probability or take the ensemble average of particular realizations. This leads to
+The expectation value of this variable is given by the probability of finding a halo in this bin. One could either integrate the underlying probability or take the ensemble average of particular realizations. This leads to
 
 \begin{align}
     &&\left\langle S^{ij} \right\rangle &= \int_{\delta M_j} \int_{\delta V_i}  \left\langle \frac{\rd n}{\rd M} \right \rangle(M) \, \rd^3 \boldsymbol{x} \, \rd M \\
@@ -94,7 +95,8 @@ This can be used to find a normalization condition for the probability density b
 In the first line, we have used that the halo profile of a single halo with mass $M'$ and location $\boldsymbol{x}'$ is independent of a particular realization of the universe and such can be factored out of the ensemble average. In the next step, we can use this to find an expression for the density contrast,
 \begin{align}
     \label{eq:density-contrast}
-    \delta(\boldsymbol{x}) &= \frac{\rho(\boldsymbol{x})-\langle \rho \rangle }{\langle \rho \rangle} = \frac{1}{\langle \rho \rangle} \int \left[  \sum_i \delta(M'-M_i)\,\delta^{(3)}(\boldsymbol{x}'-\boldsymbol{x}_i)-\left\langle  \frac{\rd n}{\rd M} \right\rangle(M')\right]\,\rho_H(\boldsymbol{x}-\boldsymbol{x}',M')\, \rd^3 \boldsymbol{x}' \,\rd M'\\
+    \delta(\boldsymbol{x}) &= \frac{\rho(\boldsymbol{x})-\langle \rho \rangle }{\langle \rho \rangle} \\
+    &= \frac{1}{\langle \rho \rangle} \int \left[  \sum_i \delta(M'-M_i)\,\delta^{(3)}(\boldsymbol{x}'-\boldsymbol{x}_i)-\left\langle  \frac{\rd n}{\rd M} \right\rangle(M')\right]\,\rho_H(\boldsymbol{x}-\boldsymbol{x}',M')\, \rd^3 \boldsymbol{x}' \,\rd M'\\
 &\coloneqq  \int \left\langle  \frac{\rd n}{\rd M} \right\rangle(M')\,\delta_H(\boldsymbol{x}',M') \,\frac{\rho_H(\boldsymbol{x}-\boldsymbol{x}',M')}{\langle \rho \rangle}\, \rd^3 \boldsymbol{x}' \,\rd M'.
 \end{align}
 We have defined a new halo distribution contrast, $\delta_H$, that compares the realization of halo masses and centres to their underlying uniform distribution. The next step is to calculate the two-point correlation function, $\xi(\boldsymbol{x}_1,\boldsymbol{x}_2) = \langle \delta(\boldsymbol{x}_1) \delta(\boldsymbol{x}_2) \rangle$. For this we will need to evaluate the same term, but with the halo distribution contrast. We write it as
@@ -107,13 +109,13 @@ We have defined a new halo distribution contrast, $\delta_H$, that compares the 
 +&\left. \left\langle  \frac{\rd n}{\rd M} \right\rangle_1\left\langle  \frac{\rd n}{\rd M} \right\rangle_2\right]. \nonumber
 \end{align}
 We have used the shorthand notations $\delta^{(4)}(\tilde{\boldsymbol{x}}-\tilde{\boldsymbol{x}}_i) = \delta^{(3)}({\boldsymbol{x}}-{\boldsymbol{x}}_i)\,\delta(M-M_i)$ for the four dimensional Dirac delta and $\langle {\rd n}/{\rd M} \rangle_i = \langle  {\rd n}/{\rd M}\rangle(M_i)$ for the halo mass function.\\
-In the next step we will separate the integrals that show up in the calculation of the two-point correlation function into bins like before, this allows us to find the random variables $S^{ij}$ again. For notation's sake, we will slice up the integration space into four-dimensional volumes with one index. We will then find integrals like
+In the next step we will separate the integrals that show up in the calculation of the two-point correlation function into bins like before, this allows us to find the random variables $S^{ij}$ again. For notation's sake, we will slice up the integration space into four-dimensional volumes with one index. We will then find integrals like in the following
 
 \begin{align}
     \mathcal{I}_g &= \iint g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2)\,\left\langle\sum_i \delta^{(4)}(\tilde{\boldsymbol{x}}_1-\tilde{\boldsymbol{x}}_i)\sum_j \delta^{(4)}(\tilde{\boldsymbol{x}}_2-\tilde{\boldsymbol{x}}_j)\right\rangle\, \rd^4\tilde{\boldsymbol{x}}_1 \, \rd^4\tilde{\boldsymbol{x}}_2 \label{eq:start_derivation_dirac}\\
-                &= \sum_\mu \sum_\nu g(\tilde{\boldsymbol{x}}_\mu,\tilde{\boldsymbol{x}}_\nu) \left\langle S^\mu S^\nu \right\rangle,
+                &= \sum_\mu \sum_\nu g(\tilde{\boldsymbol{x}}_\mu,\tilde{\boldsymbol{x}}_\nu) \left\langle S^\mu S^\nu \right\rangle.
 \end{align} 
-with an arbitrary function $g$. In the easy case the indices $\mu$ and $\nu$ are the same, and we find 
+$g$ is an arbitrary test function. In the easy case the indices $\mu$ and $\nu$ are the same, and we find 
 
 \begin{align}
     \langle S^\mu  S^\mu \rangle = \langle S^\mu \rangle &= \int_{\delta V^{(4)}_\mu} \left\langle \frac{\rd n}{\rd M} \right\rangle_1 \,\rd^4 \tilde{\boldsymbol{x}}_1.
@@ -124,43 +126,43 @@ For the term with two different indices, we need to use the two-point correlatio
     \langle S^\mu  S^\nu \rangle &= \int_{\delta V^{(4)}_\mu} \int_{\delta V^{(4)}_\nu} \langle \delta_H(\tilde{\boldsymbol{x}}_1) \delta_H(\tilde{\boldsymbol{x}}_2) -1 \rangle\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1 \left\langle \frac{\rd n}{\rd M} \right\rangle_2\,\rd^4 \tilde{\boldsymbol{x}}_1 \, \rd^4 \tilde{\boldsymbol{x}}_2\\
 &\coloneqq \int_{\delta V^{(4)}_\mu} \int_{\delta V^{(4)}_\nu} ( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1 \left\langle \frac{\rd n}{\rd M} \right\rangle_2\,\rd^4 \tilde{\boldsymbol{x}}_1 \, \rd^4 \tilde{\boldsymbol{x}}_2.
 \end{align}
-With this, we can find the value of $\mathcal{I}_g$ and relate it to the original integral by joining the bins together. We find
+With this, we can find the value of $\mathcal{I}_g$ and relate it to the original integral by joining the bins.
 \begin{align}
     \mathcal{I}_g &= \sum_{\mu\,\nu} g(\tilde{\boldsymbol{x}}_\mu,\tilde{\boldsymbol{x}}_\nu)\,\left\langle S^\mu S^\nu \right\rangle\\
      &= \sum_{\mu \neq \nu} \int_{\delta^{(4)}_\mu}\int_{\delta^{(4)}_\nu}g(\tilde{\boldsymbol{x}}_\mu,\tilde{\boldsymbol{x}}_\nu)\,( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1 \left\langle \frac{\rd n}{\rd M} \right\rangle_2 \,\rd^4 \tilde{\boldsymbol{x}}_1\,\rd^4 \tilde{\boldsymbol{x}}_2\nonumber\\
      &+ \sum_{\mu}  \int_{\delta^{(4)}_\mu} g(\tilde{\boldsymbol{x}}_\mu,\tilde{\boldsymbol{x}}_\mu)\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\rd^4 \tilde{\boldsymbol{x}}_1\\
      &= \sum_{\mu \neq \nu} \int_{\delta^{(4)}_\mu}\int_{\delta^{(4)}_\nu}g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2)\,( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1 \left\langle \frac{\rd n}{\rd M} \right\rangle_2 \,\rd^4 \tilde{\boldsymbol{x}}_1\,\rd^4 \tilde{\boldsymbol{x}}_2\nonumber\\
-     &+ \sum_{\mu}  \int_{\delta^{(4)}_\mu} g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_1)\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\rd^4 \tilde{\boldsymbol{x}}_1\\
+     &+ \sum_{\mu}  \int_{\delta^{(4)}_\mu} g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_1)\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\rd^4 \tilde{\boldsymbol{x}}_1 \label{eq:microcells}\\
      &= \iint g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2)\,( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1 \left\langle \frac{\rd n}{\rd M} \right\rangle_2 \,\rd^4 \tilde{\boldsymbol{x}}_1\,\rd^4 \tilde{\boldsymbol{x}}_2\nonumber\\
      &+ \iint g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2)\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\delta^{(4)}(\tilde{\boldsymbol{x}}_1-\tilde{\boldsymbol{x}}_2)\,\rd^4 \tilde{\boldsymbol{x}}_1\,\rd^4 \tilde{\boldsymbol{x}}_2\\
      &= \iint g(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2)\,\left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\left[\left\langle \frac{\rd n}{\rd M} \right\rangle_2\,( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )+\delta^{(4)}(\tilde{\boldsymbol{x}}_1-\tilde{\boldsymbol{x}}_2)\right]\,\rd^4\tilde{\boldsymbol{x}}_1\,\rd^4\tilde{\boldsymbol{x}}_2 \label{eq:end_detivation_dirac}
 \end{align}
-In the fourth line we use that the function $g$ is varying slowly in one bin and thus can be approximated as the value at the bin center. We then combine the microcells in line six and artificially add an integration over $\tilde{\boldsymbol{x}}_2$ to find the final result. When comparing equations \ref{eq:start_derivation_dirac} and \ref{eq:end_detivation_dirac} we find an expression for the halo seed density two-point correlation function, 
+In the fourth step we use that the function $g$ is varying slowly in one bin and thus can be approximated as the value at the bin center. We then combine the microcells in equation \ref{eq:microcells} artificially add an integration over $\tilde{\boldsymbol{x}}_2$ to find the final result. When comparing equations \ref{eq:start_derivation_dirac} and \ref{eq:end_detivation_dirac} we find an expression for the halo seed density two-point correlation function: 
 \begin{align}
     \left\langle\sum_i \delta^{(4)}(\tilde{\boldsymbol{x}}_1-\tilde{\boldsymbol{x}}_i)\sum_j \delta^{(4)}(\tilde{\boldsymbol{x}}_2-\tilde{\boldsymbol{x}}_j)\right\rangle = \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\left[\left\langle \frac{\rd n}{\rd M} \right\rangle_2\,( \xi_H(\tilde{\boldsymbol{x}}_1,\tilde{\boldsymbol{x}}_2) -1 )+\delta^{(4)}(\tilde{\boldsymbol{x}}_1-\tilde{\boldsymbol{x}}_2)\right] \\
     \langle \delta_H(\boldsymbol{x}_1,M_1) \delta_H(\boldsymbol{x}_2,M_2) \rangle = \xi_H(\boldsymbol{x}_1,\boldsymbol{x}_2,M_1,M_2)+ \left[\left\langle \frac{\rd n}{\rd M} \right\rangle\!(M_1) \right]^{-1}\!\! \delta^{(3)}(\boldsymbol{x}_1-\boldsymbol{x}_2)\,\delta(M_1-M_2). \label{eq:two-point-halo-seed-density}
 \end{align}
-With this, we can find the two-point correlation function to be
+With this, we can find the two-point correlation function.
 \begin{align}
     \xi(\boldsymbol{x}_1,\boldsymbol{x}_2) =& \iint \left\langle \frac{\rd n}{\rd M} \right\rangle_1\!\!\left\langle  \frac{\rd n}{\rd M} \right\rangle_2\!\!
     \langle\delta_H(\tilde{\boldsymbol{x}}'_1)\,\delta_H(\tilde{\boldsymbol{x}}'_2)\rangle \,\frac{\rho_H(\boldsymbol{x}_1-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle} \,\frac{\rho_H(\boldsymbol{x}_2-\boldsymbol{x}'_2,M_2')}{\langle \rho \rangle}\, \rd^4\tilde{\boldsymbol{x}}'_1 \rd^4\tilde{\boldsymbol{x}}'_2 \nonumber\\
     =&\iint \xi_H(\boldsymbol{x}'_1,\boldsymbol{x}'_2,M_1',M_2') \left\langle \frac{\rd n}{\rd M} \right\rangle_1\!\!\left\langle \frac{\rd n}{\rd M} \right\rangle_2 \!\!\frac{\rho_H(\boldsymbol{x}_1-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle} \,\frac{\rho_H(\boldsymbol{x}_2-\boldsymbol{x}'_2,M_2')}{\langle \rho \rangle}\, \rd^4\tilde{\boldsymbol{x}}'_1 \rd^4\tilde{\boldsymbol{x}}'_2 \nonumber \\
-    +&\int \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\frac{\rho_H(\boldsymbol{x}_1-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle}\,\frac{\rho_H(\boldsymbol{x}_2-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle} \rd^4 \tilde{\boldsymbol{x}}_1'.
+    +&\int \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\frac{\rho_H(\boldsymbol{x}_1-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle}\,\frac{\rho_H(\boldsymbol{x}_2-\boldsymbol{x}'_1,M_1')}{\langle \rho \rangle} \rd^4 \tilde{\boldsymbol{x}}_1'
 \end{align}
-In the next step, we note that the halo over densities, $\delta_H$, are biased tracers of the matter over densities, $\delta_m$. We assume that the bias is a function of the mass of the halo but not its location due to the isotropy of space, and is linear. With this we can find \begin{align*}
-    \xi_H(\boldsymbol{x}_1,\boldsymbol{x}_2,M_1,M_2) = b(M_1)\,b(M_2)\,\xi_m(\boldsymbol{x}_1,\boldsymbol{x}_2). 
+In the next step, we note that the halo density contrast, $\delta_H$, is a biased tracer of the matter density contrast $\delta_m$. We assume that the bias is a function of the mass of the halo but not its location due to the isotropy of space. We also assume linear biasing. \begin{align*}
+    \xi_H(\boldsymbol{x}_1,\boldsymbol{x}_2,M_1,M_2) = b(M_1)\,b(M_2)\,\xi_m(\boldsymbol{x}_1,\boldsymbol{x}_2)
 \end{align*}
-Our initial assumptions that all the matter should be in halos argues that the bias function should be a function close to unity and thus the integral 
+Our initial assumptions that all the matter should be in halos argues that the bias function should be close to unity and thus the integral 
 \begin{equation}
 \int b(M)\,\left\langle\frac{\rd n}{\rd M}\right\rangle \frac{\rho_H(\boldsymbol{x},M)}{\langle\rho\rangle} \rd^3\boldsymbol{x}\,\rd M \approx 1. \label{eq:two-halo-integral}
 \end{equation}
-To find the power spectrum we start with the Fourier transformation of the density contrast 
+To find the power spectrum we start with the Fourier transformation of the density contrast.
 
 \begin{align}
     \delta(\boldsymbol{k}) = \frac{1}{(2\pi)^3}&\int \left\langle  \frac{\rd n}{\rd M} \right\rangle(M')\,\delta_H(\boldsymbol{x}',M') \,\frac{\rho_H(\boldsymbol{x}-\boldsymbol{x}',M')}{\langle \rho \rangle}\,\exp[{-i\boldsymbol{k}\cdot\boldsymbol{x}}] \rd^3 \boldsymbol{x}' \,\rd M'\,\rd^3\boldsymbol{x}\\
     =&\int \left\langle  \frac{\rd n}{\rd M} \right\rangle(M')\,\delta_H(\boldsymbol{x}',M') \,\frac{\rho_H(\boldsymbol{k},M')}{\langle \rho \rangle}\,\exp[{-i\boldsymbol{k}\cdot\boldsymbol{x}'}] \rd^3 \boldsymbol{x}' \,\rd M'
 \end{align} 
-In the next step, we need to calculate the expectation value of the density contrast. We will then insert the two-point correlation of halo density contrast from equation \ref{eq:two-point-halo-seed-density} to find
+In the next step, we need to calculate the expectation value of the density contrast. We will then insert the two-point correlation of halo density contrast from equation \ref{eq:two-point-halo-seed-density} to find the following.
 \begin{align}
     \langle \delta(\boldsymbol{k}_1)\delta^*(\boldsymbol{k}_2)\rangle &=  \int \xi(\boldsymbol{x}_1-\boldsymbol{x}_2) b(M_1)\, b_(M_2)\, \left\langle \frac{\rd n}{\rd M} \right\rangle_1\!\!\left\langle \frac{\rd n}{\rd M} \right\rangle_2 \!\!\frac{\rho_H(\boldsymbol{k}_1,M_1)}{\langle \rho \rangle}\,e^{-i\boldsymbol{k}_1\cdot\boldsymbol{x}_1} \nonumber \\
     &\times \frac{\rho_H(\boldsymbol{k}_2,M_2)}{\langle \rho \rangle}\,e^{i\boldsymbol{k}_2\cdot\boldsymbol{x}_2} \, \rd^3{\boldsymbol{x}}_1 \rd^3{\boldsymbol{x}}_2 \,\rd M_1\,\rd M_2 \nonumber\\
@@ -170,92 +172,98 @@ In the next step, we need to calculate the expectation value of the density cont
     &+(2\pi)^3\,\int \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\left[\frac{\rho_H(\boldsymbol{k}_1,M_1)}{\langle \rho \rangle}\right]^2\,\delta(\boldsymbol{k}_1-\boldsymbol{k}_2) \,\rd M_1 \\
     &= (2\pi)^6 \int P_{mm}(\boldsymbol{k}_1) \, b(M_1)\, \left\langle \frac{\rd n}{\rd M} \right\rangle_1 \frac{\rho_H(\boldsymbol{k}_1,M_1)}{\langle \rho \rangle}\,\delta(\boldsymbol{k}_1-\boldsymbol{k}_2) \nonumber \\
     &\times  b(M_2)\,\left\langle\frac{\rd n}{\rd M} \right\rangle_2\,\frac{\rho_H(\boldsymbol{k}_2,M_2)}{\langle \rho \rangle} \,\rd M_1\,\rd M_2\nonumber\\
-    &+(2\pi)^3\,\int \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\left[\frac{\rho_H(\boldsymbol{k}_1,M_1)}{\langle \rho \rangle}\right]^2\,\delta(\boldsymbol{k}_1-\boldsymbol{k}_2)\,\rd M_1.
+    &+(2\pi)^3\,\int \left\langle \frac{\rd n}{\rd M} \right\rangle_1\,\left[\frac{\rho_H(\boldsymbol{k}_1,M_1)}{\langle \rho \rangle}\right]^2\,\delta(\boldsymbol{k}_1-\boldsymbol{k}_2)\,\rd M_1
 \end{align}
-In the first step, we have inserted that the two-point correlation function of matter is the Fourier back transformed matter power density. Then we have factored out plane waves such that after integration over real space we are left with Dirac delta distributions, we then use them to simplify the integrals in the last step. After We factor out the remaining Dirac deltas we find the expression of the power spectrum as the sum of the one-halo and two-halo terms. The first Term is the two-halo term and is given by 
+In the first step, we have inserted that the two-point correlation function of matter is the reverse Fourier transformed matter power density. Then we have factored out plane waves such that after integration over real space we are left with Dirac delta distributions, we then use them to simplify the integrals in the last step. After we factor out the remaining Dirac deltas we find the expression of the power spectrum is the sum of the one-halo and two-halo terms. The first term is the two-halo term and is given by 
 \begin{equation}
 P^{2h}(k) \coloneqq P_{mm}(k) \left[(2\pi)^3\int b(M)\,\left\langle\frac{\rd n}{\rd M}\right\rangle\!\!(M)\,\frac{\rho(\boldsymbol{k},M)}{\langle \rho \rangle} \, \rd M\right]^2.
 \end{equation}
-Its interpretation is that it is the correlation of two separate halos. The integral itself can be understood as a mean over the galaxy shapes with a small bias stemming from the fact, that very massive halos cluster much more strongly than normal matter. It is also proportional to the matter power spectrum because these halos are formed from seeds of initial matter perturbations. We infer from this that their spatial correlation is given by the matter power spectrum.\\
-The second term is the one-halo term. It is given by 
+This is the correlation of two separate halos. The integral itself can be understood as a mean over the galaxy shapes with a small bias stemming from the fact that very massive halos cluster much more strongly than normal matter. It is also proportional to the matter power spectrum because these halos are formed from seeds of initial matter perturbations. We infer from this that their spatial correlation is given by the matter power spectrum.\\
+The second term is the one-halo term.
 \begin{equation}
-    P^{1h}(k) \coloneqq (2\pi)^3 \int \left\langle\frac{\rd n}{\rd M}\right\rangle\!\!(M)\,\left[\frac{\rho(\boldsymbol{k},M)}{\langle \rho \rangle}\right]^2 \,\rd M.
+    P^{1h}(k) \coloneqq (2\pi)^3 \int \left\langle\frac{\rd n}{\rd M}\right\rangle\!\!(M)\,\left[\frac{\rho(\boldsymbol{k},M)}{\langle \rho \rangle}\right]^2 \,\rd M
 \end{equation}
-In the context of galaxy clustering the interpretation of this term would be as shot noise. In this context, it is a bit more subtle as it now correlates the matter in one halo with itself. This gives it its functional dependence of $\rho^2$. The integral itself can again be understood as a mean over the halo distribution such that this term becomes the mean self-correlation. 
+In the context of galaxy clustering the interpretation of this term would be the shot noise. In this context, it is a bit more subtle as it now correlates the matter in one halo with itself. This gives it the functional dependence of $\rho^2$. The integral itself can again be understood as a mean over the halo distribution such that this term becomes the mean self-correlation. 
 
 \section{The \hmcode Implementation}
-Both components need firstly the Fourier transformation of the halo density profile
+Both terms of the halo model need firstly the Fourier transformation of the halo density profile
 \begin{equation}
     \rho_H(k,z,M) = \int e^{i\boldsymbol{k}\cdot \boldsymbol{r}}\,\rho_H(r,z,M)\,\rd^3 \boldsymbol{r} = \int_0^{r_{lim}} 4\,\pi\,r^2 \frac{\sin(k\,r)}{k\,r}\,\rho(r,z,M) \rd r.
 \end{equation}
-The cutoff radius, $r_\mathrm{lim}$, is defined via the mass of the Halo. It is calculated by requiring that the mass enclosed by a sphere of that radius is given by 
+The cutoff radius, $r_\mathrm{lim}$, is defined via the mass of the halo. It is calculated by requiring that the mass enclosed by a sphere of that radius is given by 
 
 \begin{equation}
+    \label{eq:halo-edge}
     M = \frac{4\,\pi}{3}\,r_\mathrm{lim}^3\, \Delta_H(z)\,\bar{\rho},
 \end{equation}
-where $\Delta_H$ is a density contrast, describing how much higher the halo density is than the underlying matter density of the universe $\bar{\rho}$. It was calculated in Einstein-de Sitter cosmologies that the Halo after virialization has an overdensity of $\approx$ 178. To account for cosmologies with $\Omega_m$ different from one and massive neutrinos we use a fitting formula from Mead\cite{Mead_2016}. It is fitted to use only parameters that govern the formation of structure like the (integrated) growthrate and $\Omega_m$. To handle massive neutrinos an additional correction factor as a function of $f_\nu$ is added to the fitting formula. To keep the fitting parameters for cosmologies with massive neutrinos and dark energy the same, the growthrates and mass fraction that enter the fitting formula are calculated in an equivalent cosmology where the massive neutrinos and the dark energy are converted to CDM and $\Lambda$ respectively.\\
+where $\Delta_H$ is a density contrast, describing how much higher the halo density is compared to the mean matter density of the universe $\langle{\rho}\rangle$. It was calculated in Einstein-de Sitter (EdS) cosmologies that the Halo after virialization has an overdensity of $\approx$ 178. To account for cosmologies with $\Omega_m\neq 1$ and massive neutrinos, we use a fitting formula from Mead\cite{Mead_2016}. It is fitted to use only parameters that govern the formation of structure like the (integrated) growthrate and the denisity parameter of matter. To handle massive neutrinos, an additional correction factor as a function of $f_\nu$ is added to the fitting formula. Furthermore, to keep the fitting parameters for cosmologies with massive neutrinos and dark energy the same, the growthrates and mass fraction that enter the fitting formula are calculated in an equivalent cosmology where the massive neutrinos and the dark energy are converted to CDM and $\Lambda$ respectively.\\
 The halo density profile $\rho$ is taken as a modified FNW \cite{Navarro_1997} profile 
 
 \begin{equation}
     \rho(r,z,M) \propto \frac{1}{\frac{r}{r_s\,\nu^\eta}\left(1+\frac{r}{r_s\,\nu^\eta}\right)},
 \end{equation}
-where the parameter $\nu^\eta$ is a parameter further bloating the halo shape was added. The proportionality factor in front is used to fix the mass of the halo. The parameter $\nu$ is the peak-height variable defined via 
+where an additional parameter $\nu^\eta$ was added. It parametrizing any additional bloating of the halo shape. The proportionality factor in front is used to fix the mass of the halo. The parameter $\nu$ is the peak-height variable defined as 
 
 \begin{equation}
 \nu = \frac{\delta_c(z)}{\sigma^{cb}_M(z)}.
 \end{equation}
-The mass $M$ defines a radius $R_\sigma$ over which we calculate the variance of the smoothed field. The relation is setting the scale to the radius of a sphere of background matter density with mass $M$. This leads to a definition similar to $r_\mathrm{lim}$ \begin{equation*}
-    M =  \frac{4\,\pi}{3}\,R_\sigma^3\,\bar{\rho}.
+The mass $M$ defines a radius $R_\sigma$ over which we calculate the variance of the smoothed field. The relation is setting the scale to the radius of a sphere of background matter density with mass $M$. This leads to a definition similar to $r_\mathrm{lim}$ defined in \ref{eq:halo-edge}.
+\begin{equation*}
+    M =  \frac{4\,\pi}{3}\,R_\sigma^3\,\bar{\rho}
 \end{equation*}
-The variable $\delta_c$ is the critical overdensity that matter distributions must reach to collapse into a halo. It was computed in Einstein-de Sitter to be close to 1.686. To more accurately model spherical collapse $\delta_c$ is taken as a fitting function from \cite{Nakamura_1997}, and modified to account for the presence of massive neutrinos through a correction factor. Similar to $\Delta_H$ the fitting formula only is a function of the (integrated) growthrate and $\Omega_m$ calculated in an equivalent cosmology in the presence of massive neutrinos and dark energy.\\
-The parameter $\nu$ essentially quantifies how likely it is for given matter overdensities to collapse. That is why we use the variance of the CDM+baryon field to calculate it, as we know that neutrinos are not slow enough to cluster on scales of halos. It is often encountered in the context of peak-background split formalism and spherical collapse models like the ones from Press-Schächter \cite{1974ApJ...187..425P}. The parameter $\eta$ is a free parameter in the \hmcode model and is fitted to be $\eta(z)=\mathcal{A}_\eta\times\left[\sigma_8^{cb}(z)\right]^{\alpha_\eta}$. The functional form is chosen like this because it should be a function of a parameter that describes the collapse of the halo and not just cosmological parameters.\\
-Finally, The halo shape radius, $r_s$, parametrizes the radial profile of the halo density, and it is related to the boundary of the halo, $r_\mathrm{lim}$, via the halo concentration, $c$, \begin{align*}
+The variable $\delta_c$ is the critical overdensity that matter distributions must reach to collapse into a halo. It was computed in EDS to be close to 1.686. To more accurately model spherical collapse $\delta_c$, is taken as a fitting function from \cite{Nakamura_1997} and modified to account for the presence of massive neutrinos through a correction factor. Similar to $\Delta_H$, the fitting formula is a function only of the (integrated) growthrate and the total matter density calculated in an equivalent cosmology in the presence of massive neutrinos and dark energy.\\
+The parameter $\nu$ essentially quantifies how likely it is for given matter overdensities to collapse. That is why we use the variance of the CDM+baryon field to calculate it, as we know that neutrinos are not slow enough to cluster on scales of halos. It is often encountered in the context of the peak-background split formalism and spherical collapse models like the ones from Press-Schächter \cite{1974ApJ...187..425P}. The parameter $\eta$ is a free parameter in the \hmcode model and is fitted to be \begin{align}
+    \eta(z)=\mathcal{A}_\eta\times\left[\sigma_8^{cb}(z)\right]^{\alpha_\eta}
+\end{align}
+ The functional form is chosen like this because it should be a function of a parameter that describes the collapse of the halo and not cosmological parameters.\\
+Finally, the halo shape radius, $r_s$, parametrizes the radial profile of the halo density and is related to the boundary of the halo, $r_\mathrm{lim}$, via the halo concentration, $c$, \begin{align*}
     r_\mathrm{lim} = c\,r_s.
 \end{align*}
 This parameter affects the innermost structure of the halo thus affecting the matter power spectrum on the smallest scales. We take its functional form to be
 
 \begin{equation}
-    c(M,z) = \mathcal{B}\left[\frac{1+z_\mathrm{f}(M,z)}{1+z}\right]\,\frac{D(z_c)}{D^\mathrm{eqq}(z_c)}\,\frac{D(z)}{D^\mathrm{eqq}(z)}
+    \label{eq:halo_collapse_time}
+    c(M,z) = \mathcal{B}\left[\frac{1+z_\mathrm{f}(M,z)}{1+z}\right]\,\frac{D(z_c)}{D^\mathrm{eqq}(z_c)}\,\frac{D(z)}{D^\mathrm{eqq}(z)}.
 \end{equation}
-The factor $\mathcal{B}$ is a free constant that was fitted to the N-body simulations. The term $z_\mathrm{f}$ that appears in the equation is the redshift at which the halo is formed. We consider a halo of mass $M$ to be formed when its innermost part crosses the critical density. If we then assume normal growth we find the implicit equation
+The factor $\mathcal{B}$ is a free constant that was fitted to the N-body simulations. The term $z_\mathrm{f}$, that appears in the equation \ref{eq:halo_collapse_time}, is the redshift at which the halo is formed. We consider a halo of mass $M$ to be formed when its innermost part crosses the critical density. If we then assume normal growth we find the implicit equation
 
 \begin{equation}
     \frac{D(z_\mathrm{f})}{D(z)}\,\sigma^{cb}_{\gamma M }(z) = \delta_c(z),
 \end{equation}
-with the free parameter $\gamma$ chosen to be $1\%$, defining what innermost part actually means. The formula is equivalent to asking when a smaller halo of mass $\gamma\,M$ would have formed. The redshift of formation $z_\mathrm{f}$ often ends up being very high, indicating, that the properties of halos are set very early in their evolution. Still in some cases $z_\mathrm{f}$ could end up being earlier than the redshift $z$. In these cases, we set $z_\mathrm{f}=z$. The next two factors account for the effect of dark energy further modifying the dynamics of collapse. The first is an empirical correction factor that was obtained from fits of the NFW profile to N-body simulations by \cite{2004A&A...416..853D}. The redshift of collapse $z_c$ would be calculated similarly as $z_f$, but we can use that the ratio becomes constant at high redshifts and just use a high redshift of $z_c=10$. For high redshifts $z$, this factor would need to vanish, as then the effect of dark energy is negligible. The second fraction was added for this purpose in \hmcode.\\
+with the free parameter $\gamma$ chosen to be $1\%$, defining what innermost part actually means. The formula is equivalent to asking when a smaller halo of mass $\gamma\,M$ would have formed. The redshift of formation $z_\mathrm{f}$ often ends up being very high, indicating that the properties of halos are set very early in their evolution. Still in some cases $z_\mathrm{f}$ could end up being earlier than the redshift $z$. In these cases, we set $z_\mathrm{f}=z$. The next two factors account for the effect of dark energy further modifying the dynamics of collapse. The first is an empirical correction factor that was obtained from fits of the NFW profile to N-body simulations by \cite{2004A&A...416..853D}. The redshift of collapse $z_c$ would be calculated similarly as $z_f$, but we can use that the ratio becomes constant at high redshifts and just use a high redshift of $z_c=10$. For high redshifts $z$, this factor would need to vanish, as then the effect of dark energy is negligible. The second fraction was added for this purpose in \hmcode.\\
 The next ingredient to calculate the one-halo term and the two-halo term is the halo mass function, $\frac{\rd n}{\rd M}$. As we know from equation \ref{eq:halo_mass_function_normalization} it has to be normalized.  That is why it is more convenient to use the normalized halo mass function $F(\nu,z)$. We take it as
 
 \begin{equation}
     F(\nu,z) \,\rd \nu= \frac{M}{\bar{\rho}}\, \frac{\rd n}{\rd M} \, \rd M = A\,\left[1+\frac{1}{\left(q\,\nu^2\right)^p}\right]\,e^{-q\,\nu^2/2} \,\rd \nu.
 \end{equation}
-It is a modified version of the Press Schechter function with free parameters $q$ and $p$. The parameter $A$ is calculated from the normalization. We use the standard values for these 
+It is a modified version of the Press Schechter function with free parameters $q$ and $p$. The parameter $A$ is calculated from the normalization. We use the standard values for these.
 
 \begin{equation*}
-    p=0.3,\quad q=0.707,\quad A=0.21616.
+    p=0.3\quad q=0.707\quad A=0.21616
 \end{equation*}
-The final ingredient that we would need to calculate the two-halo term would be the halo mass bias. To calculate it one would need to follow the peak-background split formalism, where we assume that all matter perturbations that cross the critical overdensity collapse into halos. The bias itself asks, how much stronger more massive halos cluster and can thus be calculated from the derivative of the halo mass function with respect to the peak-height variable.
-In reality, we do not need the bias to calculate the two-halo term. Like stated before the bias is a function close to unity and thus the integral that goes into the two-halo term is approximately 1, as seen in equation \ref{eq:two-halo-integral}.\\
-To better match simulations the final formula for the two-halo term is modified in two regards. Firstly the power spectrum in the two-halo term is replaced by a power spectrum where the wiggles of the BAO have been smoothed out to an extent. This is a well-understood effect of gravitational evolution. The exact formulation of the "de-wiggling" is a topic of current debate, but a simple approach is followed in \hmcode.\\
-We start with the linear power spectrum obtained by our Boltzmann solver, $P_{mm}^\mathrm{lin}$, We then divide it with the Eisenstein-Hu no-wiggle power spectrum approximation. We then smooth the ratio by coevolving it with a broad Gaussian filter. After multiplying again with the approximation we find the smoothed power spectrum, $P_\mathrm{smt}$. The "de-wiggled" power spectrum is given then as a weighted sum\begin{align}
+The final ingredient that we would need to calculate the two-halo term would be the halo mass bias. To calculate it, one would need to follow the peak-background split formalism, where we assume that all matter perturbations, that cross the critical overdensity, collapse into halos. The bias itself quantifies how much stronger more massive halos cluster and can thus be calculated from the derivative of the halo mass function with respect to the peak-height variable.
+In reality, we do not need the bias to calculate the two-halo term. As stated, the bias is a function close to unity and thus the integral that goes into the two-halo term is approximately 1, as seen in equation \ref{eq:two-halo-integral}.\\
+To better match simulations, the final formula for the two-halo term is modified in two regards. Firstly the power spectrum in the two-halo term is replaced by a power spectrum where the wiggles of the BAO have been smoothed out to an extent. This is a well-understood effect of gravitational evolution. The exact formulation of the "de-wiggling" is a topic of current debate, but a simple approach is followed in \hmcode.\\
+We start with the linear power spectrum,$P_{mm}^\mathrm{lin}$, obtained by our Boltzmann solver. We then divide it with the Eisenstein-Hu no-wiggle power spectrum approximation \cite{Eisenstein_1998}. We then smooth the ratio by coevolving it with a broad Gaussian filter. After multiplying with the Eisenstein-Hu approximation we find the smoothed power spectrum, $P_\mathrm{smt}$. The "de-wiggled" power spectrum is a weighted sum of the no-wiggle and the linear power spectrum. \begin{align}
     P_{dw} &= e^{-g(k,z)}\,P^{lin}_{mm}(k,z) + (1-e^{-g(k,z)})\,P_\mathrm{smt}(k,z)\\
- g(k,z) &= k^2\,\frac{1}{6\,\pi^2}\int_0^\infty P^\mathrm{lin}_{mm}(k,z)\,\rd k\coloneqq k^2 \sigma_v^2(z).
+ g(k,z) &= k^2\,\frac{1}{6\,\pi^2}\int_0^\infty P^\mathrm{lin}_{mm}(k,z)\,\rd k\coloneqq k^2 \sigma_v^2(z)
  \end{align}
 The second modification of the two-halo spectrum is that by default it does not contain an early dip of the power spectrum that occurs in the one-loop correction in the effective field theory approach of the LSS. Its physical interpretation is that the growth of voids, in reality, is slower than predicted in linear perturbation theory and leads to an overestimate of the power spectrum on very large scales. This effect is modelled by a multiplication of the de-wiggled power spectrum with a function fitted to dampen the power spectrum by a factor $(1-f_D)$ past a scale $k_D$.\\
 The final two-halo power spectrum in \hmcode is given by \begin{equation}
     P^{2h}(k,z) = P_\mathrm{dw}(k,z)\,\left[1-f_D(z)\,\frac{k^{n_D}(z)}{k_D^{n_D}(z)+k^{n_D}}\right].
 \end{equation}
-The functions $k_D(z)$ and $f_D(z)$ have the same functional form as the shape parameter, $\eta(z)$, that appears in the FNW profile. We again use the variance of the CDM+baryon field in the functional form to fit as massive neutrinos should not affect the universal collapse dynamics. The parameter $n_D$ is also a free parameter and is fitted to the N-body simulations.\\
-The one halo term has also two modifications done to it compared to the one obtained from the halo model. Firstly in equation \ref{eq:density-contrast} we assume that halos make up the matter density contrast of the universe. Since only cold matter clusters in halos, we need to correct this and multiply the halo density profile with a factor $(1-f_\nu)$.\\
-The second modification we need to do is a suppression of the one halo term on large scales. It turns out that the one halo term in the standard halo model becomes constant on the largest scales, but because of energy conservation, a virilized halo should lead to a power spectrum growing with $k^4$. To account for this we multiply the one halo power spectrum such that our final formula is given by
+The functions $k_D(z)$ and $f_D(z)$ have the same functional form as the shape parameter, $\eta(z)$, that appears in the FNW profile. We again use the variance of the CDM+baryon field in the functional form to fit as massive neutrinos should not affect the universal collapse dynamics. The parameter $n_D$ is also a free parameter and is fitted to N-body simulations.\\
+The one halo term also has two modifications done to it compared to the one obtained from the halo model. Firstly in equation \ref{eq:density-contrast} we assume that halos make up the matter density contrast of the universe. Since only cold matter clusters in halos, we need to correct this and multiply the halo density profile with a factor $(1-f_\nu)$.\\
+The second modification we need to do is a suppression of the one halo term on large scales. It turns out that the one halo term in the standard halo model becomes constant on the largest scales, but due to energy conservation, a viralized halo should lead to a power spectrum growing $\propto k^4$. To account for this, we multiply the one halo power spectrum with an empirical correction. Our final formula is given by
 \begin{equation}
     P^{1h}(k,z) = (1-f_\nu)^2\,(2\,\pi)^3\int_0^\infty \left\langle\frac{\rd n}{\rd M}\right\rangle\!\!(M)\,\left[\frac{\rho(k,M)}{\langle \rho \rangle}\right]^2 \,\rd M\,\frac{k^4}{k_*(z)^4+k^4}.
 \end{equation}
 The transition wave number, $k_*$, is fitted to a functional form like the transition wave number of the two-halo term $k_D$.\\
 A final problem of the halo model is, that it is not well suited to describe the correlation in the transition region from the one-halo term to the two-halo term. This is due to neglecting that very close halos or overlapping subhalos correlate with each other. Neglecting these effects leads to an up to 20\% underestimate of the power spectrum. To better model the transition we have added a smoothing parameter $\alpha(z)$. As this parameter affects the spectral index of the power spectrum, its functional form is not a function of the variance of the CDM+baryon field but of the effective spectral index of its power spectrum, $n_\mathrm{eff}$. To calculate it we can use the definition of the variance in real space to find 
 \begin{equation}
-    3+n_\mathrm{eff}(z) = - \frac{\rd \log \sigma_{cb}(R,z)}{\rd \log R}(R_c,z),
+    3+n_\mathrm{eff}(z) = - \frac{\rd \log \sigma_{cb}(R,z)}{\rd \log R}(R_c,z).
 \end{equation}
-where $R_c$ is defined as the radius where the standard derivation of the CDM-baryon field crosses the critical overdensity $\delta_c(z)$. The final fitting formula for $\alpha$ is then \begin{equation}
+Here, $R_c$ is defined as the radius where the standard derivation of the CDM-baryon field crosses the critical overdensity $\delta_c(z)$. The final fitting formula for $\alpha$ is then \begin{equation}
     \alpha(z) = \mathcal{A}_\alpha\,\left[\mathcal{C}_\alpha\right]^{n_\mathrm{eff}(z)}.
 \end{equation}
 With the transition smoothing we define our nonlinear power spectrum as \begin{equation}

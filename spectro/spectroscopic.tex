@@ -47,11 +47,11 @@
 \begin{document}
 \chapter{The Spectroscopic Probe}
 
-One of the main two instruments of the \Euclid mission. It is supposed to measure the redshift of galaxies to high precision and obtain from that a three-dimensional
+is one of the main two instruments of the \Euclid mission. It is supposed to measure the redshift of galaxies to high precision and obtain from that a three-dimensional
 map of galaxies. One could use this map of galaxies to define a density field 
 
 \begin{equation}
-    \rho_\mathrm{g}(\boldsymbol{r}) \coloneq \sum_i \delta^{(3)}(\boldsymbol{r}-\boldsymbol{r}_i),
+    \rho_\mathrm{g}(\boldsymbol{r}) \coloneqq \sum_i \delta^{(3)}(\boldsymbol{r}-\boldsymbol{r}_i),
 \end{equation}
 where we use a Dirac-delta centred around the measured position of the galaxies $\boldsymbol{r}_i$. This is achieved by doing a long-time exposure of the galaxies and using some characteristic emission lines to measure the redshift of the galaxy. By assuming some arbitrary reference cosmology one would then translate the redshift and the angles into a position. The measurement of the redshift is much more precise than with the method of the photometric probe, but it is limited by a smaller sample size and a smaller survey volume. For the \Euclid mission, it is planned to further bin the galaxies into four separate redshift bins with redshifts between 0.9 and 1.8. Each bin will have its separate survey volume $V_i$ that can be approximated by multiplying the comoving volume by the planned sky fraction $f_\mathrm{sky}\,$= 0.35.\\
 The final likelihood is modelled as a Gaussian likelihood where the observed power spectrum $P^\mathrm{obs}$ is compared with a theoretically predicted one $P^\mathrm{th}$: 
@@ -63,76 +63,76 @@ where the summation is done over each redshift bin. The factor 1/2 in front of t
 
 \begin{equation*}
     \label{eq:lkl_spectro_v1}
-    V_{\boldsymbol{k}\,,i} \coloneq \frac{(2\pi)^3}{V_{i}}.
+    V_{\boldsymbol{k}\,,i} \coloneqq \frac{(2\pi)^3}{V_{i}}.
 \end{equation*}
-This chapter will be structured like this: First we will briefly explain how the observed power spectrum is extracted from the galaxy catalogue. Then we will talk about the modeling of the predicted power spectrum. We will have a separate section to explain the effects that massive neutrinos will have on the predicted power spectrum, and explain our changes to the IST method of calculating the predicted power spectrum to more accurately describe these effects. The survey specifications needed for the calculation of the likelihood are found at the end of the chapter.
+This chapter will be structured in the following way. First, we will briefly explain how the observed power spectrum is extracted from the galaxy catalogue. Then we will talk about the modeling of the predicted power spectrum. We will have a separate section to explain the effects that massive neutrinos will have on the predicted power spectrum, and explain our changes to the method of calculating the predicted power spectrum described in \cite{Sprenger:2018tdb} and \cite{casas2023euclid}. We do this to have a robust forecast of the neutrino mass. The survey specifications needed for the calculation of the likelihood are found at the end of the chapter.
 
 \section{Extracting the Power Spectrum from Observation}
 The derivation of how to extract the matter power spectrum from observation is very close to the derivation of the halo model discussed in the section \ref{sec:halo_model}. We will thus only give the main steps and refer the reader to that section if one wants step-by-step instruction on the results. In the derivation, one needs to assume that all galaxies have the same mass and have a delta-peak density profile. The simplification is later dropped when discussing the finite resolution of the instrument.\\
-One could then extract from this density field the underlying probability density field $p_\mathrm{g}(\boldsymbol{r})$. This would define a  local deviation $\delta_\mathrm{g}(\boldsymbol{r})$ from a homogenous distribution by factorizing out the mean number density $\tilde{n} $ and some local detection probability $p_\mathrm{det}(\boldsymbol{r})$: 
+One could then extract from this density field the underlying probability density field $p_\mathrm{g}(\boldsymbol{r})$. This would define a  local deviation $\delta_\mathrm{g}(\boldsymbol{r})$ from a homogenous distribution by factorizing out the mean number density $\tilde{n} $ and some local detection probability $p_\mathrm{det}(\boldsymbol{r})$ 
 
 \begin{equation}
     p_\mathrm{g} = \tilde{n} \, p_\mathrm{det}(\boldsymbol{r}) \, \left( 1 + \delta_\mathrm{g}(\boldsymbol{r} )\right).
 \end{equation}
-This quantity is the equivalent of the distribution density contrast from section \ref{sec:halo_model}. For the \Euclid mission we assume, that the detection probability is just a constant. For simplicity, we will assume in the following derivation a constant probability $ p_\mathrm{det}(\boldsymbol{r})=1$, but it should be noted, that as long as it is sufficiently constant every step could be done with a non-constant probability.\\ 
+This quantity is the equivalent of the distribution density contrast from section \ref{sec:halo_model}. For the \Euclid mission, we assume that the detection probability is just a constant. For simplicity, we will assume in the following derivation a constant probability $ p_\mathrm{det}(\boldsymbol{r})=1$, but it should be noted, that as long as it is sufficiently constant, every step could be done with a non-constant probability.\\ 
 The two-point correlation function $\xi_\mathrm{g}(\Delta\boldsymbol{r})$ of this quantity of the deviation is the Fourier transform of the power spectrum $P^\mathrm{obs}(\boldsymbol{k})$: 
 
 \begin{align}
     \xi_\mathrm{g}(\boldsymbol{\Delta r}) &= \langle \delta_\mathrm{g}(\boldsymbol{x}) \delta_\mathrm{g}(\boldsymbol{x}+\Delta \boldsymbol{r}) \rangle_{\boldsymbol{x}}\\
     P^\mathrm{obs}(\boldsymbol{k}) &= \int_V \xi_\mathrm{g}(\Delta \boldsymbol{r}) e^{-i \boldsymbol{k}\cdot \Delta \boldsymbol{r}} \rd^3 \Delta\boldsymbol{r}.
 \end{align}
-The quantity that will be called the one-halo term of the section \ref{sec:halo_model} will be added later. In this case, it will be just a constant Poisson noise.
-The measurement of the galaxies does not give us their real comoving coordinates $\boldsymbol{r}$ but the observational coordinates $\boldsymbol{x}=(z,\phi,\theta)$, where $z$ is their redshift and $\phi$ and $\theta$ there sky angles. In observation space, we can define the power spectrum as 
+The quantity that was called the one-halo term of section \ref{sec:halo_model} will be added later. In this case, it will be just a constant Poisson noise.
+The measurement of the galaxies does not give us their real comoving coordinates $\boldsymbol{r}$ but the observational coordinates $\boldsymbol{x}=(z,\phi,\theta)$, where $z$ is their redshift and $\phi$ and $\theta$ their sky angles. In observation space, we can define the power spectrum as 
 
 \begin{equation}
-    P(\boldsymbol{u}) \coloneq \int \xi(\Delta \boldsymbol{x}) \, e^{i \, \boldsymbol{u}\cdot \Delta\boldsymbol{x}} \,\rd^3 \Delta\boldsymbol{x},
+    P(\boldsymbol{u}) \coloneqq \int \xi(\Delta \boldsymbol{x}) \, e^{i \, \boldsymbol{u}\cdot \Delta\boldsymbol{x}} \,\rd^3 \Delta\boldsymbol{x},
  \end{equation} 
 where the quantity $\xi(\Delta \boldsymbol{x})$ is extracted similarly to $\xi_\mathrm{g}(\boldsymbol{\Delta r}) $. Using this observed power spectrum we can then derive the likelihood 
 
  \begin{equation}
     \mathcal{L} \propto \exp\left[-\frac{1}{2} \sum_i \frac{1}{2 V_{u,\,i}} \int \frac{\left(P^\mathrm{th}(\boldsymbol{u})-P(\boldsymbol{u})\right)^2}{\left(\sigma_{P}\right)^2} \rd^3 \boldsymbol{u} \right].
  \end{equation}
-$V_{x,\, i}$ is the unitless volume of a redshift bin in observation space. Since the calculation of the observed power spectrum is not done in observation space but in real space, we need to translate the quantities in the likelihood, for this, we need to assume a reference cosmology, the effects of choosing this are discussed later below. To translate from observation space to comoving space we can use the transformation of measures
+$V_{x,\, i}$ is the unitless volume of a redshift bin in observation space. Since the calculation of the observed power spectrum is not done in observation space but in real space, we need to translate the quantities in the likelihood. For this, we need to assume a reference cosmology, the effects of choosing this are discussed below. To translate from observation space to comoving space we can use the transformation of measures
 
 \begin{align}
     \rd r_{\|} &= \frac{c}{H(z)}\, \rd z     \nonumber\\
     \rd r_\perp &= \left( 1+ z \right) D_A(z) \rd \theta,     \label{eq:transformation_orth}
 \end{align} 
-where the subscripts $\|$ and $\perp$ stand for the component parallel and orthogonal to the line of sight respectively. This directly tells us how to translate $V_x$ into $V$ by doing the variable transformation 
+where the subscripts $\|$ and $\perp$ stand for the components parallel and orthogonal to the line of sight respectively. This directly tells us how to translate $V_x$ into $V$ by doing the variable transformation 
 
 \begin{equation*}
     V_x \approx \frac{H(\bar{z}) V}{c (1+\bar{z})^2 D_A(\bar{z})^2},
 \end{equation*}
 where $\bar{z}$ denotes the center of a redshifts bin.\\
-Since we work with binned redshifts $z$ and in a flat sky approximation, the typical separations $\Delta \boldsymbol{x}$ are small, such that we can approximate the transformation also for the coordinate  separations to find 
+Since we work with binned redshifts $z$ in a flat sky approximation, the typical separations $\Delta \boldsymbol{x}$ are small, such that we can approximate the transformation also for the coordinate  separations to find 
 
 \begin{align}
     \Delta r_\|  &= \frac{c}{H(\bar{z})}\, \Delta x_\| \\
     \Delta r_\perp &= (1+\bar{z})\, D_A(\bar{z})\, \Delta x_\perp
 \end{align}
- The conjugated variables for $\Delta\boldsymbol{ r}$ and $\Delta\boldsymbol{x}$ $\boldsymbol{k}$ and $\boldsymbol{u}$ respectively should scale inversely. This leads to the transformation of the measure
+ The conjugated variables for $\Delta\boldsymbol{ r}$ and $\Delta\boldsymbol{x}$ are $\boldsymbol{k}$ and $\boldsymbol{u}$ respectively. They scale inversely
  
  \begin{align}
     \rd^3 \boldsymbol{k} = \frac{1}{c\,(1+\bar{z})^2} \, \frac{H(\bar{z})} {(D_A(\bar{z}))^2} \rd^3 \boldsymbol{u}.
  \end{align}
- we can use the transformation from observation space to real space we find how the power spectra are related:
+ We can use the transformation from observation space to real space we find how the power spectra are related:
  
  \begin{equation}
     \label{eq:transform_power}
     P^\mathrm{obs}(\boldsymbol{k}) = c\,(1+\bar{z})^2\, \frac{(D_A(\bar{z}))^2}{H(\bar{z})}\,P(\boldsymbol{u}).
  \end{equation}
- When doing the standard FKP method of extracting an estimator of the two-point correlation and power spectrum one finds that the error $\sigma_P$ is given by 
+ When doing the standard FKP\cite{Feldman_1994} method of extracting a minimum uncertainty estimator of the two-point correlation and power spectrum one finds that the error $\sigma_P$ is given by 
  
  \begin{equation}
     \sigma^2_P(\boldsymbol{u})  = \frac{(2\,\pi)^3}{V_x\, V_u} P(u)^2.
  \end{equation}
- Finally, the resolution of the instrument is finite the angles and redshifts have some error associated with them $\sigma_z$ and $\sigma_\theta$ respectively. This makes it, that the galaxy density in real space is no longer a summation over Dirac-deltas but over Gaussians. In Fourier space, the power spectrum is then suppressed by a Gaussian such that
+ The resolution of the instrument is finite. The angles and redshifts have some error associated with them $\sigma_z$ and $\sigma_\theta$ respectively. Due to this, the galaxy density in real space is no longer a summation over Dirac-deltas but over Gaussians. In Fourier space, the power spectrum is then suppressed by a Gaussian such that
 
 \begin{align}
-    P(k,z) \to P(k,z)\,\exp\left[- \sigma_\|^2 \, k_\|^2 - \sigma_\perp^2 k_\perp^2 \right]\coloneq q_\sigma(k,\mu,z)\,P(k,z)\quad \text{where} \\
-    \sigma_\| = \frac{c}{H} \sigma_z \quad \text{and} \quad \sigma_\perp = (1+z)\,D_A \, \sigma_\theta. \nonumber
+    P(k,z) \to P(k,z)\,\exp\left[- \sigma_\|^2 \, k_\|^2 - \sigma_\perp^2 k_\perp^2 \right]\coloneq q_\sigma(k,\mu,z)\,P(k,z) \\
+    \sigma_\| = \frac{c}{H} \sigma_z, \quad \sigma_\perp = (1+z)\,D_A \, \sigma_\theta. \nonumber
 \end{align}
-The final formula is this simple as the Fourier transform of a Gaussian is again a Gaussian. This leaves us with the equivalent quantity to the two-halo term from chapter \ref{cha:NL}. The relation of this to the bias is discussed in the next section.
+The final formula is this simple as the Fourier transform of a Gaussian is again a Gaussian. This leaves us with the equivalent quantity to the two-halo term from chapter \ref{cha:NL}. It's relation to the bias is discussed in the next section.
 Finally, we can add the one-halo term to this. But its interpretation is quite different, since the galaxy count is a counting experiment, we can identify it as shot noise. The contribution is exactly like for Poisson noise such that for each bin we add 
 
 \begin{equation}
@@ -144,25 +144,25 @@ where $n_i^\mathrm{ref}$ is the mean number density of galaxies in the redshift 
  \begin{equation}
     \mathcal{L} \propto \exp\left[-\frac{1}{2} \sum_i \frac{V_i}{2\,(2\,\pi)^3} \int_{\Delta V_{\boldsymbol{k}\,,i}} \frac{\left(P^\mathrm{th}(\boldsymbol{k})-P^\mathrm{obs}(\boldsymbol{k})\right)^2}{\left(P^\mathrm{th}(\boldsymbol{k})\right)^2} \rd^3 \boldsymbol{k} \right].
  \end{equation}
- In the next step, we can use, that the power spectrum can only be a function of the modulus of the wave vector $k \coloneq \|\boldsymbol{k}\|$ as well as the angle between the line of sight $\hat{\boldsymbol{n}}$ and the wave vector $k \,\mu \coloneq \boldsymbol{k} \cdot \hat{\boldsymbol{n}}$. We can use this to integrate over the azimuth angle of the wave vector and find that the likelihood is given by
+ In the next step, we use that the power spectrum can only be a function of the modulus of the wave vector $k \coloneqq \|\boldsymbol{k}\|$ as well as the angle between the line of sight $\hat{\boldsymbol{n}}$ and the wave vector $k \,\mu \coloneqq \boldsymbol{k} \cdot \hat{\boldsymbol{n}}$. We can use this to integrate over the azimuth angle of the wave vector and find that the likelihood is given by
  
  \begin{equation}
     \mathcal{L} \propto \exp\left[-\frac{1}{2} \sum_i \frac{V_i}{8 \pi^2} \int_{k_\mathrm{min}}^{k_\mathrm{max}} \int_{-1}^{1} k^2 \frac{\left(P^\mathrm{th}(k,\mu)-P^\mathrm{obs}(k,\mu)\right)^2}{\left(P^\mathrm{th}(k,\mu)\right)^2} \rd \mu \rd k \right]. 
  \end{equation}
- It should be noted, that the quantities $k$ and $\mu$ are very much still dependent on the reference cosmology. When we do an MCMC what would happen, is that we calculate the theoretical power spectrum $P^\mathrm{th}(k,\mu)$ that is predicted by some other cosmology that we will call sample cosmology. We then use the likelihood to test how likely it is to measure the observed data given the sample cosmology. But since all the integration is done in the reference cosmology we need to account for that during the transformation from observation space to real space, described by equations \ref{eq:transformation_orth} as well as when we translate the power spectrum from $\boldsymbol{u}$-space to $\boldsymbol{k}$-space \ref{eq:transform_power}. This leads to the equations describing the \textit{Alcock-Paczyński} effect. The components of the wave vector parallel and orthogonal to the line of sight are transformed into
+ It should be noted, that the quantities $k$ and $\mu$ are very much still dependent on the reference cosmology. When we do an Markov Chain Montecarlo parameter inference, we calculate the theoretical power spectrum $P^\mathrm{th}(k,\mu)$ that is predicted by some other cosmology that we will call sample cosmology. We then use the likelihood to test how likely it is to measure the observed data given the sample cosmology. But since all the integration is done in the reference cosmology we need to account for that during the transformation from observation space to real space, described by equations \ref{eq:transformation_orth} as well as when we translate the power spectrum from $\boldsymbol{u}$-space to $\boldsymbol{k}$-space \ref{eq:transform_power}. This leads to the equations describing the \textit{Alcock-Paczyński} effect. The components of the wave vector parallel and orthogonal to the line of sight are transformed into
  
  \begin{align}
-    k_\|^\mathrm{smp} \coloneq k^\mathrm{smp} \mu^\mathrm{smp} &= \frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} k^\mathrm{ref} \mu^\mathrm{ref}, \nonumber\\
-    k_\perp^\mathrm{smp} \coloneq k^\mathrm{smp} \sqrt{1-\left(\mu^\mathrm{smp}\right)^2} &= \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} k^\mathrm{ref} \sqrt{1-\left(\mu^\mathrm{ref}\right)^2}, \nonumber\\
+    k_\|^\mathrm{smp} \coloneqq k^\mathrm{smp} \mu^\mathrm{smp} &= \frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} k^\mathrm{ref} \mu^\mathrm{ref}, \nonumber\\
+    k_\perp^\mathrm{smp} \coloneqq k^\mathrm{smp} \sqrt{1-\left(\mu^\mathrm{smp}\right)^2} &= \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} k^\mathrm{ref} \sqrt{1-\left(\mu^\mathrm{ref}\right)^2}, \nonumber\\
     P^\mathrm{smp}(k^\mathrm{ref},\mu^\mathrm{ref}) &= \left(\frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} \right)^2 \frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} P^\mathrm{smp}(k^\mathrm{smp},\mu^\mathrm{smp}),\label{eq:Alcock-Paczynski}
  \end{align}
-where we have used the index 'smp' to note quantities calculated in the sample cosmology and ref for quantities calculated in the reference cosmology. This can be used to find equations describing the transformation of $k$ and $\mu$ to find the final equations
+where we have used the index 'smp' to note quantities calculated in the sample cosmology and ref for quantities calculated in the reference cosmology. This can be used to find equations describing the transformation of $k$ and $\mu$ to find the final equations.
 
 \begin{align}
-    k^\mathrm{smp} &= k^\mathrm{ref} \sqrt{\left[\frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \, \mu^\mathrm{ref} \right]^2 + \left[ \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} \, \sqrt{1-\left(\mu^\mathrm{ref}\right)^2} \right]^2 } \quad \text{and} \nonumber\\
-    \mu^\mathrm{smp} &= \mu^\mathrm{ref} \frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \sqrt{\left[\frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \, \mu^\mathrm{ref} \right]^2 + \left[ \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} \, \sqrt{1-\left(\mu^\mathrm{ref}\right)^2} \right]^2 }^{-1}\:. \label{eq:observed_kmu}
+    k^\mathrm{smp} &= k^\mathrm{ref} \sqrt{\left[\frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \, \mu^\mathrm{ref} \right]^2 + \left[ \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} \, \sqrt{1-\left(\mu^\mathrm{ref}\right)^2} \right]^2 } \nonumber\\
+    \mu^\mathrm{smp} &= \mu^\mathrm{ref} \frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \sqrt{\left[\frac{H^\mathrm{smp}(z)}{H^\mathrm{ref}(z)} \, \mu^\mathrm{ref} \right]^2 + \left[ \frac{D^\mathrm{ref}_A(z)}{D^\mathrm{smp}_A(z)} \, \sqrt{1-\left(\mu^\mathrm{ref}\right)^2} \right]^2 }^{-1}\: \label{eq:observed_kmu}
 \end{align}
-Using these transformations we can write now the effective $\chi^2$ only using functions of the reference cosmology
+Using these transformations, we can write now the effective $\chi^2$  using only functions of the reference cosmology
 
 \begin{equation*}
     \chi^2 = \sum_i \int_{k_\mathrm{min}}^{k_\mathrm{max}} \int_{-1}^{1} \frac{V_i\, k_\mathrm{ref}^2 }{8 \pi^2} 
@@ -173,15 +173,14 @@ Using these transformations we can write now the effective $\chi^2$ only using f
 where we have defined the redshift dependent parameters $q_\| \coloneq H^\mathrm{smp}/H^\mathrm{ref}$ and $q_\perp \coloneq D_A^\mathrm{ref}/D_A^\mathrm{smp}$.\\
 
 \subsection*{A Footnote about Units} 
-When working in cosmology there are two different units we use for the wave number $k$, you could either pass it with units $\mathrm{Mpc}^{-1}$ or $h\,\mathrm{Mpc}^{-1}$. There are arguments to use that specific unit in both cases but one consequence of the second way of doing it, is that now the value of the wave number is dependent on the value of the observable $h$. This has the following effect: If we use the units with $h$ then the integration in the likelihood is done over $k^\mathrm{ref}$ in $h^\mathrm{ref} \,\mathrm{Mpc}^{-1}$. The wave number of the sample cosmology $k^\mathrm{smp}$ would still be in units $h^\mathrm{smp} \mathrm{Mpc}^{-1}$. To fix this we need to do a substitution of $k^\mathrm{smp}\to k' = \frac{h^\mathrm{ref}}{h^\mathrm{smp}} k^\mathrm{smp}$,  fixing the unit of the integration variable to the unit in the reference cosmology and multiplying a factor $h_\mathrm{smp}\,h_\mathrm{ref}^{-1}$ in front of $P^\mathrm{th}_\mathrm{smp}$. By absorbing  the substitution in equations \refeq{eq:Alcock-Paczynski} we find the modified equation 
+When working in cosmology there are two different units we use for the wave number $k$, you could either pass it with units $\mathrm{Mpc}^{-1}$ or $h\,\mathrm{Mpc}^{-1}$. There are arguments to use each unit but one consequence of the second way of doing it is that now the value of the wave number is dependent on the value of the cosmological parameter $h$. This has the following effect: If we use the units with $h$, then the integration in the likelihood is done over $k^\mathrm{ref}$ in $h^\mathrm{ref} \,\mathrm{Mpc}^{-1}$. The wave number of the sample cosmology $k^\mathrm{smp}$ would still be in units $h^\mathrm{smp} \mathrm{Mpc}^{-1}$. To fix this we need to do a substitution of $k^\mathrm{smp}\to k' = \frac{h^\mathrm{ref}}{h^\mathrm{smp}} k^\mathrm{smp}$,  fixing the unit of the integration variable to the unit in the reference cosmology and multiplying a factor $h_\mathrm{smp}\,h_\mathrm{ref}^{-1}$ in front of $P^\mathrm{th}_\mathrm{smp}$. By absorbing  the substitution in equations \refeq{eq:Alcock-Paczynski} we find the modified equation 
 
  \begin{align*}
     k'_\mathrm{smp} &= k_\mathrm{ref}\,\frac{h_\mathrm{smp}}{h_\mathrm{ref}}\,\sqrt{q^2_\perp + \left(q_\|^2-q_\perp^2\right)\mu_\mathrm{ref}^2} \\
     \mu'_\mathrm{smp} &= k_\mathrm{ref}\, q_\|\,\sqrt{q^2_\perp + \left(q_\|^2-q_\perp^2\right)\mu_\mathrm{ref}^2}^{-1}.
  \end{align*}
 Also, the unit of the power spectrum could be either $\mathrm{Mpc}^3$ or $\mathrm{Mpc}^3\, h^{-3}$. Again the second choice has the effect that when we compare the power spectra the units
-do not match. One would need to absorb this unit change again by multiplying $P^\mathrm{th}_\mathrm{smp}$ with a factor $h_\mathrm{ref}^3\,h_\mathrm{smp}^{-3}$. In the final
-likelihood choose the units of $k^\mathrm{ref}$ to be $h\, \mathrm{Mpc}^{-1}$ while the unit of the power spectrum is $\mathrm{Mpc}^3$ such that the formula for the effective $\chi^2$ is given as 
+do not match. One would need to absorb this unit change again by multiplying $P^\mathrm{th}_\mathrm{smp}$ with a factor $h_\mathrm{ref}^3\,h_\mathrm{smp}^{-3}$. In the final likelihood we choose the units of $k^\mathrm{ref}$ to be $h\, \mathrm{Mpc}^{-1}$ while the unit of the power spectrum is $\mathrm{Mpc}^3$ such that the formula for the effective $\chi^2$ is given as 
 
 \begin{equation}
    \chi^2 = \sum_i \int_{k_\mathrm{min}}^{k_\mathrm{max}} \int_{-1}^{1} \frac{V_i\, k_\mathrm{ref}^2 }{8 \pi^2} 
@@ -192,30 +191,32 @@ likelihood choose the units of $k^\mathrm{ref}$ to be $h\, \mathrm{Mpc}^{-1}$ wh
 
 \section{Extracting the Power Spectrum from Theory}
 For the calculation of the likelihood, we will compare the observed power spectrum and a power spectrum that we calculate from theoretical modelling. Since we have no real data yet, for the forecast we will use the same recipe that we use to calculate the theoretical power spectrum for the observed power spectrum. For this, we will choose some fiducial cosmology and let it coincide with the reference cosmology for simplicity.\\
-The power spectrum of galaxies is assumed to be a tracer of the matter power spectrum. In the most naive way, we say that the density contrast of galaxies is related to the density contrast of matter via a linear bias $b$, just like we did in the halo model. We can thus write
+The power spectrum of galaxies is assumed to be a tracer of the matter power spectrum. In the most naive way, we say that the density contrast of galaxies is related to the density contrast of matter via a linear bias $b$, like we did in the halo model. We can thus write
 \begin{align*}
     \delta_g(k,z) = b(z,k)\,\delta(k,z).
 \end{align*}
-Calculating the variance of this on both sides extracts the power spectrum, and finds that the bias just factors out to find  
+Calculating the variance of this on both sides extracts the power spectrum. We find that the bias just factors out.  
 \begin{equation}
-    P_g(k,z) = b^2(z,k) P_{mm}(k,z).
+    P_g(k,z) = b^2(z,k) P_{mm}(k,z)
 \end{equation}
-If we assume the bias to be scale independent (which is known to be good in cosmologies without massive neutrinos and on small intermediate scales) we could treat the bias as one free parameter for each redshift bin and in the end marginalize over it. The matter power spectrum at the scales where the instrument is sensitive begins to deviate from the linear power spectrum predicted by the linear perturbation theory. This is also discussed in chapter \ref{cha:NL}, but the effect of this is that the baryonic acoustic oscillations are dampened by the individual $k$-modes interacting with each other. To model this we use the prescription of  \cite{Euclid:2019clj}, which "de-wiggles" the power spectrum by taking a weighted sum of the linear power spectrum $P_{mm}^\mathrm{lin}$ and a "no-wiggle" power spectrum $P_{nw}$
+If we assume the bias to be scale independent (which is known to be valid in cosmologies without scale-dependent growth and on small intermediate scales) we could treat the bias as one free parameter for each redshift bin.\\
+The matter power spectrum begins to deviate from the linear power spectrum on scales that are of interest to us. This is also discussed in chapter \ref{cha:NL}. Most interesting for the spectroscopic probe is that the baryonic acoustic oscillations are dampened by the individual $k$-modes interacting with each other. To model this we use the prescription of  \cite{Euclid:2019clj}, which "de-wiggles" the power spectrum by taking a weighted sum of the linear power spectrum $P_{mm}^\mathrm{lin}$ and a "no-wiggle" power spectrum $P_{nw}$.
 
 \begin{align}
     P_{mm}(k,\mu,z) &= P_{mm}^\mathrm{lin}(k,z)\,e^{-g} + P_{nw}(k,z)\,\left(1-e^{-g} \right)\\
-    g(k,\mu,z) &= \sigma_v(z)^2 \left(k_\perp^2+k_\|^2\left(1+f^\mathrm{fid}(z)\right)^2 \right).
+    g(k,\mu,z) &= \sigma_v(z)^2 \left(k_\perp^2+k_\|^2\left(1+f^\mathrm{fid}(z)\right)^2 \right)
 \end{align}
-The parameter $\sigma_v(z)$ is again a nuisance parameter that describes the velocities of the galaxies on large scales. It can be thus modelled as the variance of the velocity divergence field, which on linear scales is given as an integral over the matter power spectrum. As this is very much open for debate, in the final forecast we will vary $\sigma_v$ and use the value inferred from the integral as our fiducial value  
+The parameter $\sigma_v(z)$ this time is a nuisance parameter that describes the velocities of the galaxies on large scales. Like in the case of \hmcode, it can be modelled as the variance of the velocity divergence field, which on linear scales is given as an integral over the matter power spectrum. As this is very much open for debate, in the final forecast we will vary $\sigma_v$ and use the value inferred from the integral as our fiducial value  
 
 \begin{equation}
     \left[\sigma_v^\mathrm{fid}\right]^2 = \frac{1}{6\,\pi^2} \int_{k_\mathrm{min}}^{k_\mathrm{max}} P^{\mathrm{lin}}_{mm}(k,z)\, \rd k.
 \end{equation} 
-In the formula of the de-wiggling weight $g$, we have also fixed the linear growth rate $f(z)$ to its fiducial value. This is done such that the modelling of the de-wiggling weight is not cosmology-dependent and thus does not lead to further constraining power. To obtain the "no-wiggle" spectrum we apply a \textit{Savitzky-
-Golay} filter to the linear spectrum. Notice the similarity between the calculation of the de-wiggled power spectrum in {\tt HMCODE} to the calculation presented in this section. At the fiducial, the only difference is the addition of the factor $f$ in the exponential and the numeric calculation of the "no-wiggle" spectrum.\\ 
-This is further modified by other observational effects that we have discussed like the \textit{Alcock-Paczyński}-effect and the finite resolution of the instrument. One effect we have not discussed yet is redshift space distortions (RSD). These stem from the fact, that the redshift inferred from galaxies is not only of cosmological origin but also part of it is from their particular velocities. The effect can be described by the following example: Imagine two mass points in space moving towards each other due to their attractive force. The point that is further away from the observer will have its projected velocity towards the observer and thus appear to have a smaller redshift. Since the opposite is true for the point closer to the observer the points will move towards each other in redshift space. If the collapse is slow enough, this would lead to an overall amplification of the power spectrum, as the points look like they are closer to each other. The effect is strongest when the two points align with the line of sight and vanishes when they are perpendicular to the line of sight, thus the function describing this effect has to be a function of $\mu^2$. The effect would also be proportional to the clustering parameter
-\footnote{More often the term clustering parameter refers to the parameter $S_8 = \sqrt{\Omega_m/0.3}\, \sigma_8$ and not the combination $f\,\sigma_8$. These two quantities are very similar to each other as in $\Lambda$CDM the growth rate can be approximated as $f \approx \Omega_m^{\gamma}$ with $\gamma=0.55$. When looking at the 2-D couture of similar galaxy clustering experiments we see that the definition with $\gamma=0.55$ describes the degeneracy in the $\sigma_8$-$\Omega_m$ plane better than $\gamma=0.5$, so we will continue calling it the clustering parameter $f\,\sigma_8$.}
-$\sigma_8\,f$ to have these spherically collapsing mater distributions. As the observation is done in redshift space we multiply the redshift space power spectrum with the Kaiser correction factor
+In the formula of the de-wiggling weight $g$, we have also fixed the linear growth rate $f(z)$ to its fiducial value. This is done such that the modelling of the de-wiggling weight is not cosmology-dependent and thus does not lead to further constraining power. To obtain the "no-wiggle" spectrum we apply a Savitzky-
+Golay filter to the linear spectrum.\\
+Notice the similarity between the calculation of the de-wiggled power spectrum in {\tt HMCODE} to the calculation presented in this section. At the fiducial, the only difference is the addition of the factor $f$ in the exponential and the numeric calculation of the "no-wiggle" spectrum.\\ 
+The "de-wiggled" power spectrum is further modified by other observational effects that we have discussed like the \textit{Alcock-Paczyński}-effect and the finite resolution of the instrument. One effect we have not discussed yet is redshift space distortions (RSD). These stem from the fact, that the redshift inferred from galaxies is not only of cosmological origin but also part of it is from their particular velocities. The effect can be described by the following example: Imagine two mass points in space moving towards each other due to their attractive force. The point that is further away from the observer will have its projected velocity towards the observer and thus appear to have a smaller redshift. Since the opposite is true for the point closer to the observer the points will move towards each other in redshift space. If the collapse is slow enough, this would lead to an overall amplification of the power spectrum, as the points look like they are closer to each other. The effect is strongest when the two points align with the line of sight and vanishes when they are perpendicular to the line of sight, thus the function describing this effect has to be a function of $\mu^2$. The effect would also be proportional to the clustering parameter
+\footnote{More often the term clustering parameter refers to the parameter $S_8 = \sqrt{\Omega_m/0.3}\, \sigma_8$ and not the combination $f\,\sigma_8$. These two quantities are very similar to each other as in $\Lambda$CDM the growth rate can be approximated as $f \approx \Omega_m^{\gamma}$ with $\gamma=0.55$. When looking at the 2-D contour of similar galaxy clustering experiments we see that the definition with $\gamma=0.55$ describes the degeneracy in the $\sigma_8$-$\Omega_m$ plane better than $\gamma=0.5$, so we will continue calling $f\,\sigma_8$ the clustering parameter.}
+$\sigma_8\,f$ to have these spherically collapsing matter distributions. As the observation is done in redshift space we multiply the redshift space power spectrum with the Kaiser correction factor
 
 \begin{equation}
     q_\mathrm{RSD} = \left(b(z) + f(z)\,\mu^2 \right)^2.
@@ -226,15 +227,15 @@ To find the clustering parameter, which is better constrained by clustering expe
     q_\mathrm{RSD} = \left(b(z) \sigma_8(z) + f(z) \sigma_8(z) \,\mu^2 \right)^2\,\frac{1}{\sigma_8^2(z)}.
 \end{equation*}
 The combination $b\,\sigma_8$, or to be more precise the log of this parameter, is varied as a nuisance parameter in the forecast for each bin.\\
-If the matter points happen to approach each other very quickly, then at some point in observation space the point further away in real space will have a smaller redshift than the closer one. This effect is called the "fingers of god" (FOG) effect, as spherically collapsing matter distribution can end up looking like very elongated ellipses. As the two points look like they would be further away, the overall power spectrum will be reduced. The effect should have the same angle dependence, should be stronger on smaller, more non-linear, scales and again be stronger in stronger clustering cosmologies. One possible parametrization of this effect is given as 
+If the matter points happen to approach each other very quickly, then at some point in observation space the point further away in real space will have a smaller redshift than the closer one. This effect is called the "fingers of God" (FOG) effect, as a spherically collapsing matter distribution can end up looking like very elongated ellipses. As the two points look like they would be further away, the overall power spectrum will be reduced. The effect should have the same angle dependence, should be stronger on smaller, more nonlinear scales and again be stronger in stronger clustering cosmologies. One possible parametrization of this effect is given as 
 
 \begin{equation}
 q_\mathrm{FOG} = \frac{1}{1+\left[f^\mathrm{fid}(z)\,\sigma_p(z)\,k\,\mu\right]^2}.   
 \end{equation}
-The parameter $\sigma_p$ describes the variance of the peculiar velocities of the galaxies and is again modelled as an integral over the linear velocity divergence power spectrum. As this is again a source of theoretical modelling uncertainty we will fix $f$ to its fiducial value and vary $\sigma_p$. The fiducial value of $\sigma_p$ is chosen to coincide with $\sigma_v$
+The parameter $\sigma_p$ describes the variance of the peculiar velocities of the galaxies and is again modelled as an integral over the linear velocity divergence power spectrum. As this is again a source of theoretical modelling uncertainty, we will fix $f$ to its fiducial value and vary $\sigma_p$. The fiducial value of $\sigma_p$ is chosen to coincide with $\sigma_v$.
 
 \begin{equation}
-    \sigma_p^\mathrm{fid} = \sigma_v^\mathrm{fid}.
+    \sigma_p^\mathrm{fid} = \sigma_v^\mathrm{fid}
 \end{equation}
 Finally, we add some additional shot noise $P^\mathrm{shot}_i$ for each bin as an additional nuisance parameter. Our final model for the power spectrum of some cosmology evaluated at the fiducial cosmology is thus
 
@@ -244,11 +245,11 @@ Finally, we add some additional shot noise $P^\mathrm{shot}_i$ for each bin as a
     &\times\,\exp\left[- \sigma_\|^2 \, k^2\,\mu^2 - \sigma_\perp^2 k^2 \left(1-\mu^2\right) \right]\, \frac{P_{mm}(k,z)}{\sigma_8^2(z)} \nonumber \\
     &+ \left.\frac{1}{n_i^\mathrm{fid}} + P_i^\mathrm{shot}\middle] \frac{H^\mathrm{ref}}{c\left[ \,(1+z_i)\,D_A^\mathrm{ref}\right]^2}\right.\:,\nonumber
 \end{align}
-where we have left away the arguments $k(k^\mathrm{fid},\mu^\mathrm{fid},z_i)$ and $\mu=\mu(\mu^\mathrm{fid},z_i)$. We also note that the factor $H^\mathrm{ref}/c\,\left[ \,(1+z_i)\,D_A^\mathrm{ref}\right]^2$, that converts the power spectrum from real space to redshift space, cancels out in the final likelihood but is here for completeness’s sake.
+where we have left out the arguments $k(k^\mathrm{fid},\mu^\mathrm{fid},z_i)$ and $\mu=\mu(\mu^\mathrm{fid},z_i)$. We also note that the factor $H^\mathrm{ref}/c\,\left[ \,(1+z_i)\,D_A^\mathrm{ref}\right]^2$, that converts the power spectrum from real space to redshift space, cancels out in the final likelihood but is listed here for completeness's sake.
 
 \section{The Effect of Massive Neutrinos}
-The main sources of this section are the papers \cite{Raccanelli_2018} and \cite{Vagnozzi:2018pwo} which I will cite throughout. One assumption we made in the last section was that the galaxy bias $b$ would be scale-independent. The reason this can not be true is that since the neutrinos become free streaming at some scale they contribute to the power spectrum like CDM at large scales and do not contribute to the matter power spectrum on small scales. This adds an overall scale dependence to the bias as now there is a scale at which the content of the clustered matter changes.\\
-One method of getting rid of the scale dependence in the bias is to understand what this bias is describing. It is a light-to-mass bias meaning that it associates some matter distortion for each galaxy or halo observed. Since these structures are much smaller than the free streaming scale, they are tracers not of the total matter spectrum $P_{mm}$, but the power spectrum of CDM+baryons $P_{cb}$. It has been shown in \cite{Villaescusa_Navarro_2014} and the follow-up papers thereof, that by using the CDM+baryon power spectrum the bias is again scale-independent large scales. In real space, we can write 
+The main sources of this section are the papers \cite{Raccanelli_2018} and \cite{Vagnozzi:2018pwo} which I will be referencing throughout. One assumption we made in the last section was that the galaxy bias $b$ would be scale-independent. The reason this cannot be true is that since the neutrinos become free streaming at some scale they contribute to the power spectrum like CDM at large scales and do not contribute to the matter power spectrum on small scales. This adds an overall scale dependence to the bias as now there is a scale at which the content of the clustered matter changes.\\
+One method of getting rid of the scale dependence in the bias is to understand what this bias is describing. It is a light-to-mass bias meaning that it associates some matter overdensity to the galaxy or halo observed. Since these structures are much smaller than the free streaming scale, they are not tracers of the total matter spectrum $P_{mm}$, but the power spectrum of CDM+baryons $P_{cb}$. It has been shown in \cite{Villaescusa_Navarro_2014} and the follow-up papers thereof, that by using the CDM+baryon power spectrum the bias is again scale-independent large scales. In real space, we can write 
 
 \begin{align}
     P_g(k) &= b^2(k,z)\, P_{mm}(k,z) = \hat{b}^2(z)\, P_{cb}(k,z),\\
@@ -263,16 +264,16 @@ We can notice two changes here, first the aforementioned change from $b$ to $\ha
 \begin{align*}
     q_\mathrm{RSD} = \left(\hat{b}(z) \,\sigma_8^{cb}(z)+f_{cb}(z,k) \,\sigma_8^{cb}(z)\mu^2\right)^2 \frac{1}{\left(\sigma_8^{cb}(z)\right)^2} .
 \end{align*} 
-The FOG effect remains unchanged. It could be argued that in order to describe again the effect of the redshift space distortions we should change the fiducial value of $f\,\sigma_p$ to quantities computed using the CDM+baryon power spectrum. We decided to keep them though, since the effect of the FOG is coming from random peculiar velocities of the individual halos towards each other. As the velocities are related to the gravitational potential inside these structures by the Virial theorem the effect of the neutrinos should still apply. Thus, we stick to the prescription with the quantities calculated using the total matter distribution.\\
-Again an open question would be how to correctly calculate the non-linear power spectrum. We decide to stick to the method of de-wiggling and the question becomes if we want to change the fiducial values to use quantities calculated with the CDM+baryon power spectrum in the weight $g$. We decided against this. The physical effect of de-wiggling comes from large-scale flows of the matter structures and is thus related to the underlying gravitational potential. As the neutrinos still contribute to the potential we stick to the quantities calculated with the total matter power spectrum.\\
-The other factors do not depend on the power spectrum and are kept like before. The final power spectrum we use to more robustly describe the effect of massive neutrinos is given as 
+The FOG effect remains unchanged. It could be argued that in order to describe the effect of the redshift space distortions we should change the fiducial value of $f\,\sigma_p$ to quantities computed using the CDM+baryon power spectrum. However, we decided to keep them, since the effect of the FOG is coming from random peculiar velocities of the individual halos towards each other. The velocities are related to the gravitational potential inside these structures by the Virial theorem, equating their mean kinetic energy with their mean potential energy. This means that the effect of the neutrinos should still apply. Thus, we stick to the prescription with the quantities calculated using the total matter distribution.\\
+An open question would be how to correctly calculate the nonlinear power spectrum. If we decide to stick to the method of de-wiggling, the question becomes if we want to change our model for $\sigma_p$. We decided against this. The physical effect of de-wiggling comes from large-scale flows of the matter structures and is thus related to the underlying gravitational potential. As the neutrinos still contribute to the potential we stick to the quantities calculated with the total matter power spectrum. We stress here that both of these choices do not matter. In reality, when we do an MCMC we do not know about any fiducial values of these nonlinear modeling parameters. This means that there should not be any dependence of our final forecast on the fiducial value of these nuisance parameters.\\
+The other factors do not depend on the power spectrum and are as before. The final power spectrum is used to more robustly describe the effect of massive neutrinos. 
 
 \begin{align}
     P^\mathrm{th}(k^\mathrm{fid},\mu^\mathrm{fid},z_i) =& \left[\frac{H(z_i)}{H^\mathrm{fid}(z_i)}\, \left[\frac{D^\mathrm{fid}_A(z_i)}{D_A(z_i)}\right]^2 \, \frac{\left(\hat{b}_i \sigma^{cb}_8(z_i) + f^{cb}(z_i) \sigma^{cb}_8(z_i) \,\mu^2 \right)^2}{1+\left[f^\mathrm{fid}(z_i)\,\sigma_p(z_i)\,k\,\mu\right]^2} \right. \nonumber\\
     &\times\,\exp\left[- \sigma_\|^2 \, k^2\,\mu^2 - \sigma_\perp^2 k^2 \left(1-\mu^2\right) \right]\, \frac{P_{mm}(k,z)}{\left(\sigma_8^{cb}(z)\right)^2}  \\
-    &+ \left.\frac{1}{n_i^\mathrm{fid}} + P_i^\mathrm{shot}\middle] \frac{H^\mathrm{ref}}{c\left[ \,(1+z_i)\,D_A^\mathrm{ref}\right]^2}\right.\:.\nonumber
+    &+ \left.\frac{1}{n_i^\mathrm{fid}} + P_i^\mathrm{shot}\middle] \frac{H^\mathrm{ref}}{c\left[ \,(1+z_i)\,D_A^\mathrm{ref}\right]^2}\right.\nonumber
 \end{align} 
-In tables \ref{tab:spectro_nuisance} and \ref{tab:spectro_specifics} are the specifications and fiducial values needed to compute the likelihood.
+In tables \ref{tab:spectro_nuisance} and \ref{tab:spectro_specifics} are listed the specifications and fiducial values needed to compute the likelihood.
 
 \begin{table}
     \centering
@@ -289,7 +290,7 @@ In tables \ref{tab:spectro_nuisance} and \ref{tab:spectro_specifics} are the spe
     $ P_3^\mathrm{shot}$ & 0                            & $\sigma_v(z_3)$ & 4.4606\\  
     $ P_4^\mathrm{shot}$ & 0                            & $\sigma_v(z_4)$ & 4.0677\\  
 \end{tabular}
-\caption{Fiducal values of nuisance parameters needed to calculate the Spectroscopic likelihood.}
+\caption{Fiducal values of nuisance parameters needed to calculate the spectroscopic likelihood.}
 \label{tab:spectro_nuisance}
 \end{table}
 
@@ -309,7 +310,7 @@ In tables \ref{tab:spectro_nuisance} and \ref{tab:spectro_specifics} are the spe
      $k_\mathrm{min}$     & 0.001 $h \mathrm{Mpc}^{-1}  $&$z_3$&1.4\\
      $k_\mathrm{max}$     & (25/30) $h \mathrm{Mpc}^{-1}$&$z_4$&1.65\\
 \end{tabular}
-\caption{Survey specifications needed to calculate the Spectroscopic likelihood. For $k_\mathrm{max}$ we noted two values that represent pessimistic and optimistic settings respectively.}
+\caption{Survey specifications needed to calculate the spectroscopic likelihood. For $k_\mathrm{max}$ we noted two values that represent pessimistic and optimistic settings respectively.}
 \label{tab:spectro_specifics}
 \end{table}
 

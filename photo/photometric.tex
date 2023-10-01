@@ -49,8 +49,8 @@
 
 \begin{document}
 \chapter{The Photometric Probe}
-The second instrument of the \Euclid mission we will cover is the photometric instrument. It is supposed to measure the galaxy shape of one billion galaxies and use redshift information from ground-based observatories to conduct a weak shearing and a galaxy clustering survey. In order to quickly measure the redshift of one billion galaxies the collaboration uses a photometric method to measure the redshift. A photometric redshift is obtained by measuring the apparent brightness magnitude in different colour bands. These color brightnesses are compared to each other leading to a redshift estimate.\\
-The observable in this case is not the power spectrum like for the spectroscopic probe but some two-dimensional overdensity field $\varTheta$ that can either correspond to the lensing map or the galaxy map. We obtain from these maps the moments $a_{lm}$ via decomposition into spherical harmonics. Using their orthogonality relation we find 
+The second instrument of the \Euclid mission that we will cover is the photometric instrument. It is supposed to measure the galaxy shape of one billion galaxies and use redshift information from ground-based observatories to conduct a weak lensing and a galaxy clustering survey. In order to quickly measure the redshift of one billion galaxies the instrument uses a photometric method. A photometric redshift is obtained by measuring the apparent brightness magnitude in different colour bands. These color brightnesses are compared to each other leading to a redshift estimate.\\
+The observable in this case is not the power spectrum as for the spectroscopic probe, but as two-dimensional overdensity field $\varTheta$ that can either correspond to the lensing map or the galaxy map. From these maps we obtain the moments $a_{lm}$ via decomposition into spherical harmonics. Using their orthogonality relation, we find 
 
 \begin{equation}
     a_{\ell, m} = \int_{\mathcal{S}_2} \varTheta(\boldsymbol{\Omega}) Y_{\ell\,m}^*(\boldsymbol{\Omega}) \rd^2 \boldsymbol{\boldsymbol{\Omega}}.
@@ -60,10 +60,10 @@ We can then build a vector by calculating these moments for each $z$ bin. The fi
 \begin{equation}
     \mathcal{L} \propto \prod_{\ell\,m} \left[\frac{1}{\sqrt{\det C_\ell}} \exp\left(-f_\mathrm{sky}\, \frac{1}{2}\vec{a}_{\ell\,m} \cdot \left(C_\ell^\mathrm{th}\right)^{-1}\,\vec{a}_{\ell\,m}^{}\!^*\right) \right].
 \end{equation}
-This expression can be further simplified by calculating an estimator of the covariance of the moments. To find the real covariance one would need to mean over different realizations of the universe but by using that the covariance is independent of $m$ we can find \begin{equation}
+This expression can be further simplified by calculating an estimator of the covariance of the moments. To find the real covariance one would need to average over different realizations of the universe but by using that the covariance is independent of $m$ we can find \begin{equation}
     \left(C^\mathrm{obs}_\ell\right)_{ij} \approx  \left(\hat{C}^\mathrm{obs}_\ell\right)_{ij} = \frac{1}{2\,\ell+1} \sum_{m=-\ell}^{\ell} \left(a_{\ell\,m}\right)_i \, \left(a_{\ell\,m}\right)_j^*.
 \end{equation}
-After factoring out a factor $\sqrt{\det \hat{C}^\mathrm{obs}_\ell}$ from the likelihood normalization we can write it using only products of $\hat{C}_\ell^\mathrm{obs}$ and $C_\ell^\mathrm{th}$. For that, we also need to pull the product into the exponential and use the summation over $m$ to find the estimator again. After pulling the product over $\ell$ into the exponential we are left with 
+After factoring out $\sqrt{\det \hat{C}^\mathrm{obs}_\ell}$ from the likelihood normalization we can write it using only products of $\hat{C}_\ell^\mathrm{obs}$ and $C_\ell^\mathrm{th}$. For that, we also need to pull the product into the exponential and use the summation over $m$ to find the estimator again. After pulling the product over $\ell$ into the exponential we are left with 
 
 \begin{equation}
     \chi^2 = f^\mathrm{sky} \sum_{\ell=\ell_\mathrm{min}}^{\ell_\mathrm{max}} (2\,\ell+1)\left[\log\left(\frac{\det \hat{C}_\ell^\mathrm{obs}}{\det C_\ell^\mathrm{th}}\right) + \mathrm{Tr}\left[\left(C_\ell^\mathrm{th}\right)^{-1}\,\hat{C}^\mathrm{obs}_\ell\right]-N_\mathrm{bin}\right],
@@ -71,14 +71,15 @@ After factoring out a factor $\sqrt{\det \hat{C}^\mathrm{obs}_\ell}$ from the li
 where $N_\mathrm{bin}$ is the number of redshift bins.\\
 The structure of this chapter is the following: We will first briefly explain the basics of shearing and the shearing formalism. We will then go over how we obtain the covariance matrix from theory. Finally, we will more carefully adjust the recipe to correctly model the effect of massive neutrinos.
 
-\section{The Formalism of Cosmic Sheer Observations}
-Cosmic shearing is a very rich and deep topic where the slight deformations of galaxy shapes are traced back to the gravitational potential on the line of sight. As these potential are related to the matter perturbations $\bar{\rho}\,\delta$ via the Poisson equation, 
+\section{The Formalism of Cosmic Shear Observations}
+This section follows the work of \cite{Kilbinger_2015} and \cite{Sprenger:2018tdb}. We will be citing them throughout this chapter.\\
+Cosmic shearing is a very rich and deep topic where the slight deformations of galaxy shapes are traced back to the gravitational potential on the line of sight. These potentials are related to the matter perturbations $\bar{\rho}\,\delta$ via the Poisson equation.
 
 \begin{align*}
     \Delta (\Psi+\Phi) &= 8\,\pi\, G\,a^2\,\bar{\rho}\,\delta\\
-                       &= 3\, H_0^2\, \frac{\Omega_m}{a}\, \delta,
+                       &= 3\, H_0^2\, \frac{\Omega_m}{a}\, \delta
 \end{align*}
-it can be used to probe the underlying large-scale structure of the universe. The deformations are a transformation that maps angular separations in observed space $\boldsymbol{\Omega}$ to angular separations in unlensed space $\boldsymbol{\beta}$. We can then define the linear transformation $A$ as 
+This can be used to probe the underlying LSS. The deformations are a transformation that maps angular separations in observed space $\boldsymbol{\Omega}$ to angular separations in unlensed space $\boldsymbol{\beta}$. We can then define the linear transformation $A$ as 
 
 \begin{equation}
     A = \frac{\partial \boldsymbol{\beta}}{\partial \boldsymbol{\Omega}} = \left(\begin{array}{cc}
@@ -86,55 +87,54 @@ it can be used to probe the underlying large-scale structure of the universe. Th
         -\gamma_2 & 1-\kappa+\gamma_1        
     \end{array} \right).
 \end{equation}
-The parameter $\kappa$ is called the convergence and describes the overall change in the size of the observed shape while the parameters $\gamma_1$ and $\gamma_2$ describe the sheer or the overall rotation of the shape. Since in the context of cosmic shearing, the true sizes of galaxies are inaccessible by shape measurement alone, the real observable is the complex, reduced sheer 
+The parameter $\kappa$ is called the convergence and describes the overall change in the size of the observed shape while the parameters $\gamma_1$ and $\gamma_2$ describe the shear or the overall rotation of the shape. Since in the context of cosmic shearing, the true sizes of galaxies are inaccessible by shape measurement alone, the real observable is the complex, reduced shear 
 
 \begin{equation}
     g \coloneqq \frac{\gamma}{1-\kappa},\quad \text{with}\: \gamma = \gamma_1 + i \gamma_2.
 \end{equation} 
-The reduced sheer can be related to the observed ellipticity $\epsilon$ of galaxies. We define the complex ellipticity of a galaxy we can define elliptic regions of constant intensity with minor to major axis ratio $b/a$, and rotation angle $\phi$ $\epsilon=(a-b)/(a+b)\times \exp(2\,i\,\phi)$. This leads to the observed ellipticity being given by 
+The reduced shear can be related to the observed ellipticity $\epsilon$ of galaxies. We define the complex ellipticity of a galaxy we can define elliptic regions of constant intensity with minor to major axis ratio $b/a$, and rotation angle $\phi$ $\epsilon=(a-b)/(a+b)\times \exp(2\,i\,\phi)$. This leads to the observed ellipticity.
 
 \begin{equation}
-    \epsilon = \frac{\epsilon^2+g}{1+g^*\,\epsilon^s},
+    \epsilon = \frac{\epsilon^2+g}{1+g^*\,\epsilon^s}
 \end{equation}
-where $\epsilon^s$ denotes the intrinsic ellipticity due to the random rotation of the disc-like galaxies. Typical values of the intrinsic ellipticity are in the order of $\mathcal{O}(0.1)$ with zero mean, while the reduced sheer is typically of order $\mathcal{O}(0.01)$. By averaging over many galaxies and using that $g$ is much smaller than $\epsilon^s$ we can find the estimator of $g$ 
+Here $\epsilon^s$ denotes the intrinsic ellipticity due to the random rotation of the disc-like galaxies. Typical values of the intrinsic ellipticity are in the order of $\mathcal{O}(0.1)$ with zero mean, while the reduced shear is typically of order $\mathcal{O}(0.01)$. By averaging over many galaxies and using that $g$ is much smaller than $\epsilon^s$ we can find the estimator of $g$ 
 
 \begin{equation}
     \label{eq:lesning_estimator}
     \langle \epsilon \rangle=\langle \frac{\epsilon^2+g}{1+g^*\,\epsilon^s} \rangle \approx \langle \epsilon^s+g\rangle = g.
 \end{equation}
-The next step is to relate the lensing parameters to each other and the metric perturbations to extract from that the overdensity field $\varTheta$.  
-We can use that photons travel on null geodesics to find that the travel time $t$ as
+The next step is to relate the lensing parameters to each other and the metric perturbations to extract the overdensity field $\varTheta$. We can use that photons travel on null geodesics to find that the travel time $t$.
 
 \begin{equation*}
-    t = \int (1-(\Phi+\Psi)) \rd r,
+    t = \int (1-(\Phi+\Psi)) \rd r
 \end{equation*}
-where the integration is carried out on the light path of the photon. By using that photons always take a path that minimises the travel time under slight variation we find that the deflection angle $\rd \boldsymbol{\alpha}$ is given by 
+The integration is carried out on the light path of the photon. By using that photons always take a path that minimises the travel time under slight variation we find that the deflection angle $\rd \boldsymbol{\alpha}$ is given by 
 
 \begin{equation}
     \label{eq:deflectionangle}
     \rd \boldsymbol{\alpha} = - \boldsymbol{\nabla}_\perp (\Phi+\Psi)\, \rd r,
 \end{equation}  
-where we have denoted the derivative of the potentials perpendicular to the path with $\boldsymbol{\nabla}_\perp$ in real coordinates. This translates into a change of comoving separation and thus a change of observation angle 
+where we have denoted the derivative of the potentials perpendicular to the path with $\boldsymbol{\nabla}_\perp$ in real coordinates. This translates into a change of comoving separation $\rd \boldsymbol{x}$ and thus a change of observation angle $\rd \boldsymbol{\alpha}$.
 
 \begin{align}
     \rd \boldsymbol{x} &= (\eta-\eta') \rd \boldsymbol{\alpha} = - (\eta-\eta') \boldsymbol{\nabla}_\perp (\Phi+\Psi)\, \rd \eta'\\
-    \boldsymbol{x} &= \eta\,\boldsymbol{\Omega} - \int_0^\eta (\eta-\eta') \left[\boldsymbol{\nabla}_\perp (\Phi+\Psi)(\boldsymbol{x}(\eta'),\eta')-\boldsymbol{\nabla}_\perp (\Phi+\Psi)(0,\eta')\right] \rd \eta',
+    \boldsymbol{x} &= \eta\,\boldsymbol{\Omega} - \int_0^\eta (\eta-\eta') \left[\boldsymbol{\nabla}_\perp (\Phi+\Psi)(\boldsymbol{x}(\eta'),\eta')-\boldsymbol{\nabla}_\perp (\Phi+\Psi)(0,\eta')\right] \rd \eta'
 \end{align}  \\
-where we have defined that the observed photons originated at a comoving distance $\eta$ and the gravitational potential is placed at the comoving distances $\eta'$. The difficulty of this integration is, that the comoving separation of the two photon paths $\boldsymbol{x}$ appears again in the integral itself. Since the effect of the lens is assumed to be very weak, we can do a Born approximation where the zeroth order solution $\boldsymbol{x}^0$ is inserted into the integral. This solution is the unlensed path $\boldsymbol{x}^0=\eta\,\boldsymbol{\Omega}$. With this the matrix elements of the transformation $A$ can be calculated to 
+We can think of this formula geometrically. We have defined the origin of the observed photons at the comoving distance $\eta$. The gravitational potential is placed at the comoving distances $\eta'$ on the path of the photon. The difficulty of this integration is, that the comoving separation of the two photon paths $\boldsymbol{x}$ appears again in the integral. Since the effect of the lens is assumed to be very weak, we can do a Born approximation where the zeroth order solution $\boldsymbol{x}^0$ is inserted into the integral. This solution is the unlensed path $\boldsymbol{x}^0=\eta\,\boldsymbol{\Omega}$. With this the matrix elements of the transformation $A$ can be calculated to 
 
 \begin{equation}
     A_{ij} = \delta_{ij} - \int_0^\eta \, \frac{(\eta-\eta')\,\eta'}{\eta} \, \frac{\partial^2}{\partial x_i \, \partial x_j} \, (\Phi+\Psi)(\eta' \, \boldsymbol{\Omega},\eta')\, \rd \eta'.
 \end{equation} 
-The first derivative for $x_i$ is the component of $\boldsymbol{\nabla}_\perp$ while the derivative for $x_j$ appears with the factor $\eta'$ due to the chain rule. Using the inverse of this chain rule, both derivatives can be pulled out of the integral to finally find the lensing potential $\psi$ from the lensing parameters $\kappa$ and $\gamma$ can be calculated \begin{align}
+The first derivative for $x_i$ is the component of $\boldsymbol{\nabla}_\perp$ while the derivative for $x_j$ appears with the factor $\eta'$ due to the chain rule. We can reformulate this equation as well using the inverse chain rule. The derivatives can then be pulled out of the integral to define lensing potential $\psi$.\begin{align}
     A_{ij} &\coloneqq \delta_{ij} - \frac{\partial^2}{\partial \Omega_i \, \partial \Omega_j} \psi,\\
-    \psi &\coloneqq \int_0^\eta \frac{(\eta-\eta')}{\eta\,\eta'}\, (\Phi+\Psi)(\eta' \boldsymbol{\Omega},\eta') \, \rd \eta'.
+    \psi &\coloneqq \int_0^\eta \frac{(\eta-\eta')}{\eta\,\eta'}\, (\Phi+\Psi)(\eta' \boldsymbol{\Omega},\eta') \, \rd \eta'
 \end{align}
-The parameters are now calculated as \begin{align}
+The lensing parameters $\kappa$ and $\gamma$ can be calculated from this. \begin{align}
     \kappa &= \frac{1}{2} \, \left[\frac{\partial^2}{\partial \Omega_1^2}+\frac{\partial^2}{\partial \Omega_2^2}\right]  \psi \nonumber \\
     \gamma_1&= \frac{1}{2} \, \left[\frac{\partial^2}{\partial \Omega_1^2}-\frac{\partial^2}{\partial \Omega_2^2}\right]  \psi \\
-    \gamma_2& = \frac{\partial^2}{\partial \Omega_1\,\partial\Omega_2} \psi .\nonumber
+    \gamma_2& = \frac{\partial^2}{\partial \Omega_1\,\partial\Omega_2} \psi \nonumber
 \end{align}
-The equation for the convergence parameter $\kappa$ can be transformed into the Poisson equation by adding a term $\partial^2/\partial\eta^2$. The integral over the second derivative has negligible impact as the photons tend to travel on paths where the positive and negative contributions cancel out. We find 
+The equation for the convergence parameter $\kappa$ can be transformed into the Poisson equation by adding a term to $\partial^2/\partial\eta^2$. The integral over the second derivative has negligible impact as the photons tend to travel on paths where the positive and negative contributions cancel out. We find 
 
 \begin{align}
 \kappa(\eta\,\boldsymbol{\Omega},\eta) &= \frac{1}{2} \int_0^\eta \frac{(\eta-\eta')\eta'}{\eta}\, \underbrace{\left[\frac{\partial^2}{\partial x_1^2}+\frac{\partial^2}{\partial x_2^2}+\frac{\partial^2}{\partial \eta^2}\right]}_{=\Delta}(\Phi+\Psi)(\eta'\boldsymbol{\Omega},\eta') \rd \eta'  \nonumber \\
@@ -149,9 +149,9 @@ This equation describes how the convergence can be used as a density contrast fi
 &= \int_{z_\mathrm{min}}^{z_\mathrm{max}} \frac{1}{H(z)}\,\frac{3\,H_0^2\,\Omega_m}{2}\, (1+z)\,\eta(z) \int_z^{z_\mathrm{max}} \hat{n}_i(z') \frac{\eta(z')-\eta(z)}{\eta(z')} \,\rd z' \,\delta(\eta(z)\boldsymbol{\Omega},\eta(z)) \,\rd z \nonumber \\
 \label{eq:lensing_observable}&\coloneqq \int_{z_\mathrm{min}}^{z_\mathrm{max}} \frac{1}{H(z)}\, W_i^\mathrm{L}(z) \,\delta(\eta(z)\boldsymbol{\Omega},\eta(z)) \,\rd z. 
 \end{align} 
-In the last step, we have defined the lensing window function $W^\mathrm{L}$. Since galaxies have a gravitational effect on each other, the galaxy shapes get correlated additionally to the effect of lensing. This effect of intrinsic alignment (IA) is difficult to model such that we will treat it as a nuisance effect. In our forecast, we add to our leaning window function an additional window function $W^\mathrm{IA}$. The exact modelling of the lensing window function is discussed after an Intermezzo about Galaxy clustering as the derivation is done similarly. We will assume that the IA density contrast is a biased tracer of the matter density contrast like for Galaxy Clustering.\\
-We will now briefly go over the phenomenology of IA. Firstly due to IA close galaxies will have no random orientation anymore. Thus, in equation \ref{eq:lesning_estimator} the mean of $\epsilon^s$ does not equal zero. In reality, when we do our averaging we would need to give close galaxies a smaller weight to lessen this effect.\\
-Another speciality about the IA is that its sign is the opposite of the lensing. It becomes apparent if one again imagines two spherical galaxy configurations, one that is in the foreground and where the galaxies are aligned due to their tidal forces. The background galaxies appear such that their shapes are aligned tangentially around the foreground galaxies. The foreground galaxy has a perpendicular alignment as the galaxies have their shapes pointing towards each other. The lensing signal is reduced overall.\\
+In the last step, we have defined the lensing window function $W^\mathrm{L}$. Since galaxies have a gravitational effect on each other, the galaxy shapes get correlated additionally to the effect of lensing. This effect of intrinsic alignment (IA) is difficult to model such that we will treat it as a nuisance effect. In our forecast, we add to our lensing window function an additional window function $W^\mathrm{IA}$. The exact modelling of the lensing window function is discussed after an intermezzo about Galaxy clustering as the derivation is done similarly. We will assume that the IA density contrast is a biased tracer of the matter density contrast like for galaxy clustering. This is followinig the describtion by \cite{PhysRevD.82.049901}.\\
+We will now briefly go over the phenomenology of IA. Firstly, due to IA close galaxies will have no random orientation anymore. Thus, in equation \ref{eq:lesning_estimator} the mean of $\epsilon^s$ does not equal zero. In reality, when we do our averaging we would need to give close galaxies a smaller weight to lessen this effect.\\
+Another speciality about the IA is that its signals sign is the opposite of the lensing. It becomes apparent if one  imagines two spherical galaxy configurations. One that is in the foreground where the galaxies are aligned due to their tidal forces. The foreground galaxy has a perpendicular alignment as the galaxies have their shapes pointing towards each other. The background galaxies will get lensed such that their shapes are aligned tangentially around the foreground galaxies. This means that the deformation directions are perpendicular to one another and the lensing signal is therefore reduced.\\
 Last but not least, IA is special in that its distortion of galaxy shapes does not come with a convergence $\kappa$ like for shearing. One could use that to lessen the effect of the IA by checking if the convergence is enough to explain the ellipticity of the galaxies or directly using the convergence as the observable. The difficulty would be, that the convergence is inaccessible by galaxy shape measurements alone. There are some proposed methods to measure the convergence by measuring the magnification, as lensed galaxies appear brighter due to the Liouville theorem. This is not further discussed here, but it is the subject of current research.
 
 \subsection*{ Intermezzo: Galaxy Clustering in Angular Space}
@@ -170,7 +170,7 @@ Continuing our modelling of IA, we use an observationally motivated model that t
 \begin{equation}
     \delta_\mathrm{IA}(\eta\,\boldsymbol{\Omega},\eta) = \mathcal{A}_\mathrm{IA}\,\mathcal{C}_\mathrm{IA}\,\Omega_m\,\frac{\mathcal{F}_\mathrm{IA}(\eta)}{D(\eta)}\,\delta(\eta\, \boldsymbol{\Omega},\eta).
 \end{equation}
-The factor $\mathcal{A}_\mathrm{IA}$ is the bias amplitude that we are going to vary in our analysis, while $\mathcal{C}_\mathrm{IA}$ is a fixed normalization. The factor $D(\eta)$ is the linear growth factor. The factor $\mathcal{F}_\mathrm{IA}$ is an extension to the standard IA model and is given by a function 
+The factor $\mathcal{A}_\mathrm{IA}$ is the bias amplitude that we are going to vary in our analysis, while $\mathcal{C}_\mathrm{IA}$ is a fixed normalization. The factor $D(\eta)$ is the linear growth factor. The factor $\mathcal{F}_\mathrm{IA}$ is an extension to the standard IA model and is given by the function 
 
 \begin{align}
     \mathcal{F}_\mathrm{IA}(z) = a(\eta)^{-\eta_\mathrm{IA}}\,\left[\frac{\langle L \rangle(\eta)}{L_\star(\eta)}\right]^{\beta_\mathrm{IA}}.
@@ -183,7 +183,7 @@ To deal with IA we will now use this window function to modify our old lensing w
 \end{equation}
 where we use the minus sign as the effect of IA reduces the normal shearing signal.
 \section{Extracting the Covariance from Theory}
-We can now do the derivation of the covariance either using the observable of lensing or clustering. In reality, there is even more information than just the two observable on their own. Since the galaxies trace the matter distribution on which the lensing occurs, there is additional information in the cross-correlation of lensing and galaxy clustering. We can calculate the correlation by taking the mean of the spherical moments of different observable. Since we deliberately chose our definitions with the window functions to be the same between both probes all elements of the covariance matrix can be calculated the same. We define $\left(C^\mathrm{XY}_{\ell}\right)=\langle \left(a^\mathrm{X}_{\ell m}\right)_i \, \left(a^\mathrm{Y}_{\ell m}\right)_j\rangle$, where X and Y could either be G or L. Inserting our definitions of the observables in comoving coordinates, we find 
+We can now do the derivation of the covariance either using the observable of lensing or clustering. In reality, there is even more information than just the two observable on their own. Since the galaxies trace the matter distribution on which the lensing occurs, there is additional information in the cross-correlation of lensing and galaxy clustering. We can calculate the correlation by taking the averaging over the spherical moments for the two different observable. Since we deliberately chose our definitions with the window functions to be the same between both probes, all elements of the covariance matrix can be calculated in the same way. We define $\left(C^\mathrm{XY}_{\ell}\right)=\langle \left(a^\mathrm{X}_{\ell m}\right)_i \, \left(a^\mathrm{Y}_{\ell m}\right)_j\rangle$, where X and Y could either be G or L. Inserting our definitions of the observables in comoving coordinates, we find 
 
 \begin{align}
     \label{eq:covariance_notwopoint}
@@ -211,12 +211,12 @@ Inserting this into the definition from $C_{\ell}$ gives the full formula for th
  \begin{equation}
     \hat{n}(z) = \left(\frac{z}{z_0}\right)^2\,\exp\left[-\left(\frac{z}{z_0}\right)^{1.5}\right].
  \end{equation} 
- When there is no photometric redshift error, we could just multiply the distribution with some uniform window-picking function. The redshift error can make it that the galaxies are counted in the wrong bin which leads to a bleeding of the bins into each other. To describe this we convolve the galaxy distribution with a sum of two Gaussians
+ When there is no photometric redshift error, we could just multiply the distribution with some uniform top hat function for each bin. The redshift error can lead to galaxies being counted in the wrong bin. This leads to a bleeding of the bins into each other. To describe this we convolve the galaxy distribution with a sum of two Gaussians
  \begin{align}
     p(z,z') &= \frac{1-f_\mathrm{out}}{\sqrt{2\pi}\,\sigma_b\,(1+z)}\,\exp\left[\frac{1}{2}\left(\frac{z-c_b\,z'-z_b}{\sigma_b\,(1+z)}\right)^2\right] \nonumber\\
     &+ \frac{f_\mathrm{out}}{\sqrt{2\pi}\,\sigma_0\,(1+z)}\,\exp\left[\frac{1}{2}\left(\frac{z-c_0\,z'-z_0}{\sigma_0\,(1+z)}\right)^2\right].
  \end{align}
- The second Gaussian is there to describe the effect of strong outliers acting a bit like an overall reduction of the observable. The parameters that go into this are all fixed to experimental specifications. In the next step, we can calculate the binned galaxy distribution 
+ The second Gaussian is there to describe the effect of strong outliers where the redshift is shifted by a large margin $z_0$. This is acting similar to an overall reduction of the observable. The parameters that go into this are all fixed to experimental specifications, and briefly described in table \ref{tab:survey_spec_photo}. In the next step we can calculate the binned galaxy distribution 
 
  \begin{equation}
     \hat{n}_i(z) = \mathcal{N}\, \int_{z_i^\mathrm{min}}^{z_i^\mathrm{max}} \hat{n}(z')\, p(z,z')\,\rd z' \approx \int_{z_i^\mathrm{min}}^{z_i^\mathrm{max}} \hat{n}(z)\, p(z,z')\,\rd z' ,
@@ -247,24 +247,24 @@ Inserting this into the definition from $C_{\ell}$ gives the full formula for th
         C^\mathrm{GL}_\ell & C^\mathrm{GG}_\ell
     \end{array} \right)
  \end{equation}
- In the likelihood formula this combined probe can be understood as one observable with twice the bins, so for multipole moments $\ell$ where we have both observables, we can replace $N_\mathrm{bin}$ with $2\times N_\mathrm{bin}$. When we start to cut scales due to resolution or the lack of an adequate non-linear model, we can find that both observables have different $\ell_\mathrm{max}$. For every summand of the likelihood with only one probe, we stick to the equation given above with the covariance of the single probe. 
+ In the likelihood formula this combined probe can be understood as one observable with twice the bins, so for multipole moments $\ell$ where we have both observables, we can replace $N_\mathrm{bin}$ with $2\times N_\mathrm{bin}$. When we start to cut scales due to resolution or the lack of an adequate nonlinear model, we can find that both observables have a different $\ell_\mathrm{max}$. For every summand of the likelihood with only one probe, we stick to the equation given above with the covariance of the single probe. 
  To be able to probe higher wave numbers $k$ we need to be able to predict the nonlinear power spectrum. To obtain our nonlinear power spectrum we use the {\tt HMCODE} halo model that is described in chapter \ref{cha:NL}. Unlike the nonlinear prescription in the case of the spectroscopic probe, we do not need to add additional nuisance parameters to our modelling. All open parameters have already been fixed by fits to N-body simulations covering a wide range of $w_0w_a$CDM cosmologies with massive neutrinos.
 
 \section{The Effect of Massive Neutrinos}\label{sec:Photo_Neutrinos}
-In our definition of the galaxy window function $W^\mathrm{G}$ due to massive neutrinos the galaxy bias becomes scale dependent. If we follow our prescription from the spectroscopic probe, we can use a scale-dependent bias by replacing the matter power spectrum with the CDM+baryon spectrum. To calculate the angular power spectrum of the galaxy clustering we then find 
+In our definition of the galaxy window function $W^\mathrm{G}$, due to massive neutrinos the galaxy bias becomes scale-dependent. If we follow our prescription from the spectroscopic probe, we can use a scale-dependent bias by replacing the matter power spectrum with the CDM+baryon spectrum. To calculate the angular power spectrum of the galaxy clustering we then find 
 \begin{align}
     \left(C^\mathrm{GG}_{\ell}\right)_{ij} &= \int_{z^\mathrm{min}}^{z_\mathrm{max}} \frac{W_i^\mathrm{G}(k,z) \,  W_j^\mathrm{G}(k,z)}{\eta^2(z)\,H(z)}\,P_{mm}\left[k=\frac{\ell+\frac{1}{2}}{\eta(z)},z\right]\, \rd z. \nonumber \\
     &=\int_{z^\mathrm{min}}^{z_\mathrm{max}} \frac{H(z)\,\hat{n}_i(z)\,\hat{n}_j(z)}{\eta^2(z)}\,b^2(k,z)\,P_{mm}\left[k=\frac{\ell+\frac{1}{2}}{\eta(z)},z\right]\, \rd z. \nonumber \\
     &=\int_{z^\mathrm{min}}^{z_\mathrm{max}} \frac{H(z)\,\hat{n}_i(z)\,\hat{n}_j(z)}{\eta^2(z)}\,\hat{b}^2(z)\,P_{cb}\left[k=\frac{\ell+\frac{1}{2}}{\eta(z)},z\right]\, \rd z. 
 \end{align}
-After the replacement of power spectra the new scale independent bias $\hat{b}$ is approximated as a step-like function that is constant in every bin. We can then treat the value of the bias in each bin as a free nuisance parameter and marginalize them. We can use the new bias to define a modified scale-independent window function for galaxy clustering\begin{align*}
+After the replacement of power spectra the new scale independent bias $\hat{b}$ is approximated as a step-like function that is constant in every bin. We can then treat the value of the bias in each bin as a free nuisance parameter and marginalize over them. We can use the new bias to define a modified scale-independent window function for galaxy clustering\begin{align*}
     \hat{W}^\mathrm{G}_i(z) = \hat{b}(z)\,\hat{n}_i(z)\,H(z)
 \end{align*}\\
-For the sheering part of the weak lensing window function, we note that we do not need to do any modifications. The neutrinos still contribute to the lensing power spectrum $\Psi+\Phi$ even on scales where they do not cluster, thus the lensing power spectrum is not a probe of the CDM+baryon power spectrum but of the total matter power spectrum.\\
-For the initial alignment, the question becomes not so straightforward. Firstly the window function of IA has a growth factor in the denominator. It is scale-independent in $\Lambda$CDM but now due to massive neutrinos, it becomes scale-dependent, making the whole window function scale-dependent. The scale dependence propagates until equation \ref{eq:covariance_from_pmm}, where the limber approximation replaces $k$ by the fraction $(\ell+1/2)/r(z)$.\\
- The next difficulty arises when we remind ourselves of the reason, why we could write the contribution of IA as an additional term in a window function. We assumed that IA could be modelled as a biased tracer of the underlying density contrast. It is not so clear if the underlying density contrast is the total matter field or the CDM+baryon field. An argument for the latter would be that IA arises when close galaxies interact with each other. The galaxies themselves are biased tracers of the CDM+baryon field such that over-densities of that field form clusters that get populated with galaxies later on.\\
- We still believe that the IA should be a probe of the total matter field as it is not the interaction of the halos with each other that aligns them but rather their interaction with their surrounding tidal fields. As neutrinos do contribute to the gravitational field, as seen in the Poisson equation, we stick to the total mater field.\\
-There is still some debate on the crosscorrelation of lensing and galaxy clustering. To write the expression for this we need to start earlier in equation \ref{eq:covariance_notwopoint}. When we did our derivation, in the next step we used the expectation value of the product of the density contrasts in the power spectrum. But now the subtlety that was alluded to earlier in the chapter of the spectroscopic probe comes into play. For the cross-correlation we find 
+For the shearing part of the weak lensing window function, we note that we do not need to do any modifications. The neutrinos still contribute to the lensing power spectrum $\Psi+\Phi$ even on scales where they do not cluster, thus the lensing power spectrum is not a probe of the CDM+baryon power spectrum but of the total matter power spectrum.\\
+For the IA, the question becomes less straightforward. Firstly the window function of IA has a growth factor in the denominator. It is scale-independent in $\Lambda$CDM but now due to massive neutrinos, it becomes scale-dependent, making the whole window function scale-dependent. The scale dependence propagates until equation \ref{eq:covariance_from_pmm}, where the Limber approximation replaces $k$ by the fraction $(\ell+1/2)/r(z)$.\\
+ The next difficulty arises when we remind ourselves of the reason, for which we could write the contribution of IA as an additional term in a window function. We assumed that IA could be modelled as a biased tracer of the underlying density contrast. It is not so clear if the underlying density contrast is the total matter field or the CDM+baryon field. An argument for the latter would be that IA arises when close galaxies interact with each other. The galaxies themselves are biased tracers of the CDM+baryon field such that over-densities of that field form clusters that get populated with galaxies later on.\\
+ We still believe that the IA should be a probe of the total matter field as it is not the interaction of the halos with each other that aligns them but rather their interaction with their surrounding gravitational potential. As neutrinos do contribute to this field, as seen in the Poisson equation, we stick to the total matter field as the underlying overdensity. This would of course need to be checked with simulations.\\
+ The last term that is not clear is the crosscorrelation angular power spectrum of lensing and galaxy clustering. To write the expression for its observable we need to go back to equation \ref{eq:covariance_notwopoint}. When we did our derivation, in the next step we used the expectation value of the product of the density contrasts in the power spectrum. But now there is a subtlety that we alluded to earlier in the chapter for the spectroscopic probe. For the cross-correlation we find 
 \begin{align}
     \left(C^\mathrm{GL}_{\ell}\right)_{ij}&= \int W_i^\mathrm{G}(\eta)\, W_j^\mathrm{L}(\eta')\, Y_{\ell m}(\Omega) \, Y^*_{\ell m}(\Omega')\, \langle \delta(\eta\,\boldsymbol{\Omega})\,\delta(\eta'\,\boldsymbol{\Omega}') \rangle\, \rd^2 \boldsymbol{\Omega} \, \rd^2 \boldsymbol{\Omega}' \,\rd \eta\, \rd \eta' \nonumber \\
     &= \int \hat{W}_i^\mathrm{G}(\eta)\, W_j^\mathrm{L}(\eta')\, Y_{\ell m}(\Omega) \, Y^*_{\ell m}(\Omega')\, \langle \delta_{cb}(\eta\,\boldsymbol{\Omega})\,\delta(\eta'\,\boldsymbol{\Omega}') \rangle\, \rd^2 \boldsymbol{\Omega} \, \rd^2 \boldsymbol{\Omega}' \,\rd \eta\, \rd \eta'.
@@ -272,7 +272,7 @@ There is still some debate on the crosscorrelation of lensing and galaxy cluster
 This means that the power spectrum that enters the cross-correlation is not the matter power spectrum nor the power spectrum of CDM+baryons. To resolve this problem we use the approximation \begin{equation}
     \langle \delta_{cb}(\boldsymbol{k})\,\delta(\boldsymbol{k}') \rangle \approx \sqrt{P_{cb}(\boldsymbol{k})\,P_{mm}(\boldsymbol{k})}\,\delta(\boldsymbol{k}-\boldsymbol{k}').
 \end{equation}
-This approximation would be correct if the power spectra were linear and had scale-independent growth. The latter is approximately true as the scale-dependent growth induced from neutrinos is very small at the level of 0.4\% \cite{Euclid:2019clj}. For the first requirement, we argue that the neutrinos never become nonlinear as they are still too hot to cluster.  On the scales where the matter power spectra become nonlinear the neutrino perturbations have already decayed so much that the difference between the CDM+baryon power spectrum and the total matter power spectrum is just a constant factor. This means that this approximation only starts to break down at intermediate scales around the BAO. We can use the approximation to find 
+This approximation would be correct if the power spectra were linear and had scale-independent growth. The latter is approximately true as the scale-dependent growth induced from neutrinos is very small at the level of 0.4\% \cite{Euclid:2019clj}. For the requirement of linearity, we argue that the neutrinos never become nonlinear as they are still too hot to cluster.  On scales where the matter power spectra become nonlinear the neutrino perturbations have already decayed so much that the difference between the CDM+baryon power spectrum and the total matter power spectrum is just a constant factor. This means that this approximation only starts to break down at intermediate scales around the BAO. We can use the approximation to find 
 
 \begin{equation}
     \left(C^\mathrm{GL}_{\ell}\right)_{ij} = \int_{z^\mathrm{min}}^{z_\mathrm{max}} \frac{\hat{W}^\mathrm{G}_i(z)\,W^\mathrm{L}_j\left(k=\frac{\ell+\frac{1}{2}}{\eta(z)},z\right)}{\eta^2(z)\,H(z)}\,\sqrt{P_{cb}\,P_{mm}}\left(k=\frac{\ell+\frac{1}{2}}{\eta(z)},z\right)\,\rd z
@@ -283,7 +283,7 @@ The next difficulty arises when we need to predict the nonlinear CDM+baryon powe
     P_{mm} = f_{cb}^2\,P_{cb}+2\,f_{cb}\,f_\nu\,P_{cb\times\nu}+f_{\nu}^2\,P_{\nu},
 \end{equation} 
 
-where we encounter the total matter fractions $f_\mathrm{cb}$ and $f_\nu$, which are not to be confused with the growth rates of these perturbations. The power spectrum $P_{cb\times\nu}$ is the cross-correlation power spectrum of neutrinos and CDM+baryons while the other two are the auto-correlation spectra that we know. Next, we note that the power spectrum of neutrinos is always linear thus we can replace it in the equation with the linear version. For the cross-correlation power spectrum, we again use our approximation, that the neutrino perturbations have already decayed so much on the nonlinear scales that we can approximate the cross-correlation power spectrum with its linear counterpart. Since we can predict the nonlinear total matter power spectrum with our halo model we can solve the equation for the nonlinear CDM+baryon power spectrum and find 
+where we encounter the total matter fractions $f_\mathrm{cb}$ and $f_\nu$, which are not to be confused with the growth rates of these perturbations. The power spectrum $P_{cb\times\nu}$ is the cross-correlation power spectrum of neutrinos and CDM+baryons while the other two are the auto-correlation spectra that we know. Next, we note that the power spectrum of neutrinos is always linear thus we can replace it in the equation with the linear version. For the cross-correlation power spectrum, we again use our approximation that the neutrino perturbations have already decayed so much on the nonlinear scales that we can approximate the cross-correlation power spectrum with its linear counterpart. Since we can predict the nonlinear total matter power spectrum with our halo model we can solve the equation for the nonlinear CDM+baryon power spectrum and find 
 \begin{equation}
     P_{cb}(k,z) \approx \frac{1}{f_{cb}^2}\,\left[P_{mm}(k,z)-2\,f_{cb}\,f_\nu\,P^\mathrm{lin}_{cb\times\nu}-f_{\nu}^2\,P^\mathrm{lin}_{\nu}\right].
 \end{equation}   

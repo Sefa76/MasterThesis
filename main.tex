@@ -57,6 +57,33 @@
 
 \newcommand*{\neff}{N_\mathrm{eff}}
 \begin{document}
+\begin{titlepage}
+    \begin{center}
+        
+        \vspace*{1cm}
+        \huge
+        \textbf{Euclid sensitivity forecasts for neutrino mass and modified gravity}
+        
+        \vspace{0.5cm}
+
+             
+        \vspace{1.5cm}
+        \large
+        \textbf{Sefa Pamuk}
+ 
+        \vfill
+             
+        The present work was submitted to the 
+             
+        \vspace{0.8cm}
+                   
+        Institute for Theoretical Particle Physics and Cosmology \\
+        Rheinisch-Westfälische Technische Hochschule Aachen \\
+        Germany\\
+        29.09.2023
+             
+    \end{center}
+ \end{titlepage}
 \pagenumbering{roman}
 Ich versichere hiermit an Eides Statt, dass ich die vorliegende Masterarbeit selbstständig und ohne unzulässige fremde Hilfe erbracht habe. Ich habe keine anderen als die angegebenen Quellen und Hilfsmittel benutzt. Für den Fall, dass die Arbeit zusätzlich auf einem Datenträger eingereicht wird, erkläre ich, dass die schriftliche und die elektronische Form vollständig übereinstimmen. Die Arbeit hat in gleicher oder ähnlicher Form noch keiner Prüfungsbehörde vorgelegen. \\
 
@@ -64,13 +91,23 @@ Aachen, den 29.09.2023
 \tableofcontents
 
 \pagenumbering{arabic}
+\subfileinclude{intro/introduction}
 \subfile{Neutrinos/neutrinos}
 \subfile{nonlinear/nonlinear}
-\subfile{photo/photometric}
 \subfile{spectro/spectroscopic}
+\subfile{photo/photometric}
 \subfile{methodology/methodology}
 \subfile{validation/validation}
 \subfile{results/results}
+\chapter{Conclusion}
+
+In summary, this thesis has sought to demonstrate the importance of modelling physical effects in order to obtain realistic and robust sensitivity forecasts for neutrino mass. In the era of precision Cosmology, it is critical to address the different details of all modelling steps in order to not bias the final inference's results.\\
+In brief, the central themes of this paper include the modelling of the neutrino-induced scale-dependent growth of structure, the handling of nonlinear corrections for the observables, and the critical role of the neutrino in the galaxy bias. We have used different statistical methods to compare our forecasts with and validate our findings. For the validation we had to look into the numerical difficulties of handling neutrinos, understand the different approximation schemes to solve non-analytical problems and compute stable numerical derivatives.\\
+This study underscores the importance of going past the common Fisher approximation to have a correct forecast in models with massive neutrinos. Their strong correlation with the different cosmological parameters induces cuts and projection effects and intrinsic deviations from the Gaussian posterior. These can not be described by Fisher Information alone and can change our constraints. Our findings show the strengths of the \Euclid mission and its role in unpacking the rich treasure trove of Information in the large-scale structure.\\
+Returning to the initial question of how to do a well-modelled, unbiased, and realistic sensitivity forecast, we have also found strong biases in our parameter inference that show up if the modelling is done in an inconsistent or ignorant way.\\
+While our research has yielded valuable insights, it is not without its constraints. In our modelling, we have yet to discuss the observational effects like redshift space distortions on the angular power spectrum, corrections from baryonic feedback and mode coupling due to masking out the galactic plane.\\
+Moving forward, further investigation could delve into these open questions and the generalization of our neutrino modelling for other non-cold dark matter problems.\\
+Ultimately this study shows that the large-scale structure is the next milestone in precision Cosmology. 
 \bibliographystyle{apalike}
 \bibliography{main}
 \end{document}

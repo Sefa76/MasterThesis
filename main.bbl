@@ -16,7 +16,13 @@ Collaboration, E., Tanidis, K., et~al. (2023).
 {Dolag}, K., {Bartelmann}, M., {Perrotta}, F., {Baccigalupi}, C., {Moscardini},
   L., {Meneghetti}, M., and {Tormen}, G. (2004).
 \newblock {Numerical study of halo concentrations in dark-energy cosmologies}.
-\newblock 416:853--864.
+\newblock {\em Astronomy \& Astrophysics}, 416:853--864.
+
+\bibitem[{Euclid Collaboration: Adamek} et~al., 2023]{Euclid:2022qde}
+{Euclid Collaboration: Adamek}, J. et~al. (2023).
+\newblock {Euclid: Modelling massive neutrinos in cosmology \textendash{} a
+  code comparison}.
+\newblock {\em JCAP}, 06:035.
 
 \bibitem[{Euclid Collaboration: Blanchard} et~al., 2020]{Euclid:2019clj}
 {Euclid Collaboration: Blanchard}, A. et~al. (2020).
@@ -27,6 +33,22 @@ Collaboration, E., Tanidis, K., et~al. (2023).
 \bibitem[{Euclid Collaboration: Blanchard} et~al., 2023]{casas2023euclid}
 {Euclid Collaboration: Blanchard}, A. et~al. (2023).
 \newblock Euclid: Validation of the montepython forecasting tools.
+
+\bibitem[Feldman et~al., 1994]{Feldman_1994}
+Feldman, H.~A., Kaiser, N., and Peacock, J.~A. (1994).
+\newblock Power-spectrum analysis of three-dimensional redshift surveys.
+\newblock {\em The Astrophysical Journal}, 426:23.
+
+\bibitem[Hirata and Seljak, 2010]{PhysRevD.82.049901}
+Hirata, C.~M. and Seljak, U. c.~v. (2010).
+\newblock Erratum: Intrinsic alignment-lensing interference as a contaminant of
+  cosmic shear [phys. rev. d 70, 063526 (2004)].
+\newblock {\em Phys. Rev. D}, 82:049901.
+
+\bibitem[Kilbinger, 2015]{Kilbinger_2015}
+Kilbinger, M. (2015).
+\newblock Cosmology with cosmic shear observations: a review.
+\newblock {\em Reports on Progress in Physics}, 78(8):086901.
 
 \bibitem[Lesgourgues et~al., 2013]{lesgourgues_mangano_miele_pastor_2013}
 Lesgourgues, J., Mangano, G., Miele, G., and Pastor, S. (2013).
@@ -40,7 +62,7 @@ Lewis, A. (2019).
 \bibitem[Lewis et~al., 2000]{Lewis:1999bs}
 Lewis, A., Challinor, A., and Lasenby, A. (2000).
 \newblock {Efficient computation of CMB anisotropies in closed FRW models}.
-\newblock {\em Astrophys. J.}, 538:473--476.
+\newblock {\em ApJ}, 538:473--476.
 
 \bibitem[Mead, 2016]{Mead_2016}
 Mead, A.~J. (2016).
@@ -70,13 +92,23 @@ Navarro, J.~F., Frenk, C.~S., and White, S. D.~M. (1997).
 {Press}, W.~H. and {Schechter}, P. (1974).
 \newblock {Formation of Galaxies and Clusters of Galaxies by Self-Similar
   Gravitational Condensation}.
-\newblock 187:425--438.
+\newblock {\em The Astrophysical Journal}, 187:425--438.
 
 \bibitem[Raccanelli et~al., 2018]{Raccanelli_2018}
 Raccanelli, A., Verde, L., and Villaescusa-Navarro, F. (2018).
 \newblock Biases from neutrino bias: to worry or not to worry?
 \newblock {\em Monthly Notices of the Royal Astronomical Society},
   483(1):734--743.
+
+\bibitem[Raveri et~al., 2016]{Raveri:2016leq}
+Raveri, M., Martinelli, M., Zhao, G., and Wang, Y. (2016).
+\newblock {CosmicFish Implementation Notes V1.0}.
+
+\bibitem[Sprenger et~al., 2019]{Sprenger:2018tdb}
+Sprenger, T., Archidiacono, M., Brinckmann, T., Clesse, S., and Lesgourgues, J.
+  (2019).
+\newblock {Cosmology in the era of Euclid and the Square Kilometre Array}.
+\newblock {\em JCAP}, 02:047.
 
 \bibitem[Takahashi et~al., 2020]{Takahashi:2019hth}
 Takahashi, R., Nishimichi, T., Namikawa, T., Taruya, A., Kayo, I., Osato, K.,

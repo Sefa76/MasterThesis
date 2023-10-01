@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.2)  29 SEP 2023 21:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.2)  30 SEP 2023 10:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -643,7 +643,7 @@ Package csquotes Info: ... none found.
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count344
 \l__pdf_internal_box=\box75
-) (./main.aux
+) (./main.aux (./intro/introduction.aux)
 
 LaTeX Warning: Label `tab:spectro_nuisance' multiply defined.
 
@@ -745,88 +745,96 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 \c@lstlisting=\count352
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+ [1
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-] (./main.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+[1] (./main.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- (./Neutrinos/neutrinos.tex [1
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 \subfileinclude{intro/introduction}
+                                         [1
 
 ]
-Chapter 1.
-[2
+\openout2 = `intro/introduction.aux'.
 
-] [3]
-<../plots/neutrinoeffect_1.pdf, id=165, 462.52798pt x 346.89601pt>
+ (./intro/introduction.tex
+Chapter 1.
+) [2
+
+
+] [3] (./Neutrinos/neutrinos.tex
+Chapter 2.
+[4
+
+
+
+] [5]
+<../plots/neutrinoeffect_1.pdf, id=191, 462.52798pt x 346.89601pt>
 File: ../plots/neutrinoeffect_1.pdf Graphic file (type pdf)
 <use ../plots/neutrinoeffect_1.pdf>
-Package pdftex.def Info: ../plots/neutrinoeffect_1.pdf  used on input line 125.
+Package pdftex.def Info: ../plots/neutrinoeffect_1.pdf  used on input line 126.
 (pdftex.def)             Requested size: 210.70462pt x 158.02847pt.
-<../plots/neutrinoeffect_2.pdf, id=166, 462.52798pt x 346.89601pt>
+<../plots/neutrinoeffect_2.pdf, id=192, 462.52798pt x 346.89601pt>
 File: ../plots/neutrinoeffect_2.pdf Graphic file (type pdf)
 <use ../plots/neutrinoeffect_2.pdf>
-Package pdftex.def Info: ../plots/neutrinoeffect_2.pdf  used on input line 132.
+Package pdftex.def Info: ../plots/neutrinoeffect_2.pdf  used on input line 133.
 (pdftex.def)             Requested size: 210.70462pt x 158.02847pt.
- [4] [5 <../plots/neutrinoeffect_1.pdf> <../plots/neutrinoeffect_2.pdf>]
-<../plots/neff_luege_1.pdf, id=262, 462.52798pt x 346.89601pt>
+ [6] [7 <../plots/neutrinoeffect_1.pdf> <../plots/neutrinoeffect_2.pdf>]
+<../plots/neff_luege_1.pdf, id=286, 462.52798pt x 346.89601pt>
 File: ../plots/neff_luege_1.pdf Graphic file (type pdf)
 <use ../plots/neff_luege_1.pdf>
-Package pdftex.def Info: ../plots/neff_luege_1.pdf  used on input line 153.
+Package pdftex.def Info: ../plots/neff_luege_1.pdf  used on input line 154.
 (pdftex.def)             Requested size: 210.70462pt x 158.02847pt.
-<../plots/neff_luege_2.pdf, id=263, 462.52798pt x 346.89601pt>
+<../plots/neff_luege_2.pdf, id=287, 462.52798pt x 346.89601pt>
 File: ../plots/neff_luege_2.pdf Graphic file (type pdf)
 <use ../plots/neff_luege_2.pdf>
-Package pdftex.def Info: ../plots/neff_luege_2.pdf  used on input line 160.
+Package pdftex.def Info: ../plots/neff_luege_2.pdf  used on input line 161.
 (pdftex.def)             Requested size: 210.70462pt x 158.02847pt.
-) (./nonlinear/nonlinear.tex [6 <../plots/neff_luege_1.pdf> <../plots/neff_luege_2.pdf>]
-Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
-
- []
-
-[7
-
-]
-Overfull \hbox (8.4623pt too wide) detected at line 99
-[]
- []
-
-[8] [9] [10] [11]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 186.
- [12] [13] [14] [15]) (./photo/photometric.tex [16]
+) (./nonlinear/nonlinear.tex [8 <../plots/neff_luege_1.pdf> <../plots/neff_luege_2.pdf>]
 Chapter 3.
-[17
 
-] [18] [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 166--170
+LaTeX Warning: Citation `Winther_2019' on page 9 undefined on input line 54.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--58
 
  []
 
-[21] [22] [23] [24] [25]) (./spectro/spectroscopic.tex [26] [27]
-Chapter 4.
-[28
+[9
 
-] [29] [30] [31]
+] [10] [11] [12] [13]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 188.
+ [14] [15]
+
+LaTeX Warning: Citation `Eisenstein_1998' on page 16 undefined on input line 247.
+
+[16] [17]) (./spectro/spectroscopic.tex [18]
+Chapter 4.
+[19
+
+] [20] [21] [22]
 Overfull \hbox (36.76433pt too wide) detected at line 172
 \OML/cmm/m/it/10 ^^_[] \OT1/cmr/m/n/10 = [] [][] [][] [][]d\OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 d\OML/cmm/m/it/10 k[];
  []
@@ -836,47 +844,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--174
 
  []
 
-[32] [33] [34] [35]) (./methodology/methodology.tex [36] [37]
+[23] [24] [25] [26] [27]) (./photo/photometric.tex [28]
 Chapter 5.
-[38
+[29
 
-] [39] [40] [41] [42]
+] [30] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 166--170
+
+ []
+
+[33] [34] [35] [36] [37]) (./methodology/methodology.tex [38] [39]
+Chapter 6.
+[40
+
+] [41] [42] [43] [44]
 Overfull \hbox (29.52509pt too wide) detected at line 192
 []
  []
 
-[43pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.17}) has been already used, duplicate ignored
+[45pdfTeX warning (ext4): destination with the same identifier (name{equation.6.2.17}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.192 \end{align*}
                   ]
-
-Package caption Warning: \label without proper reference on input line 198.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:combining-probes' on page 44 undefined on input line 194.
-
-<../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf, id=717, 569.85014pt x 569.28247pt>
+<../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf, id=758, 569.85014pt x 569.28247pt>
 File: ../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf Graphic file (type pdf)
 <use ../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf>
 Package pdftex.def Info: ../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf  used on input line 197.
 (pdftex.def)             Requested size: 430.00462pt x 429.57544pt.
-) (./validation/validation.tex [44] [45 <../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf>]
-Chapter 6.
+) (./validation/validation.tex [46] [47 <../plots/combined_probes_mnu+Neff_cosmo_test_smoothing.pdf>]
+Chapter 7.
 
 Overfull \hbox (52.78188pt too wide) in paragraph at lines 61--79
 \T1/cmr/m/n/10 It starts with the code \T1/cmtt/m/n/10 CF \T1/cmr/m/n/10 that was val-i-dated in the \T1/cmr/m/it/10 Eu-clid \T1/cmr/m/n/10 project [[]].
  []
 
-[46
+[48
 
-] [47] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+] [49] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
+) [50]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 112.
- [48] [49]
-<../plots/../plots/Test_Precission_Parameter.pdf, id=834, 1156.32pt x 650.43pt>
+ [51]
+<../plots/../plots/Test_Precission_Parameter.pdf, id=875, 1156.32pt x 650.43pt>
 File: ../plots/../plots/Test_Precission_Parameter.pdf Graphic file (type pdf)
 <use ../plots/../plots/Test_Precission_Parameter.pdf>
 Package pdftex.def Info: ../plots/../plots/Test_Precission_Parameter.pdf  used on input line 168.
@@ -886,115 +896,115 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--174
 
  []
 
-[50]
-<../plots/Test_Derivative_Method.pdf, id=855, 1273.27844pt x 721.43875pt>
+[52]
+<../plots/Test_Derivative_Method.pdf, id=898, 1273.27844pt x 721.43875pt>
 File: ../plots/Test_Derivative_Method.pdf Graphic file (type pdf)
 <use ../plots/Test_Derivative_Method.pdf>
 Package pdftex.def Info: ../plots/Test_Derivative_Method.pdf  used on input line 180.
 (pdftex.def)             Requested size: 210.70462pt x 119.38452pt.
-<../plots/Test_mnu_Stepsize.pdf, id=856, 1273.27844pt x 721.43875pt>
+<../plots/Test_mnu_Stepsize.pdf, id=899, 1273.27844pt x 721.43875pt>
 File: ../plots/Test_mnu_Stepsize.pdf Graphic file (type pdf)
 <use ../plots/Test_mnu_Stepsize.pdf>
 Package pdftex.def Info: ../plots/Test_mnu_Stepsize.pdf  used on input line 187.
 (pdftex.def)             Requested size: 210.70462pt x 119.38452pt.
-<../plots/Spectro_Opt_wCDM_error_comparison.pdf, id=857, 1288.94672pt x 721.43875pt>
+<../plots/Spectro_Opt_wCDM_error_comparison.pdf, id=900, 1288.94672pt x 721.43875pt>
 File: ../plots/Spectro_Opt_wCDM_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Opt_wCDM_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Opt_wCDM_error_comparison.pdf  used on input line 198.
 (pdftex.def)             Requested size: 210.70462pt x 117.93143pt.
-<../plots/Spectro_Pess_wCDM_error_comparison.pdf, id=858, 1288.94672pt x 721.43875pt>
+<../plots/Spectro_Pess_wCDM_error_comparison.pdf, id=901, 1288.94672pt x 721.43875pt>
 File: ../plots/Spectro_Pess_wCDM_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Pess_wCDM_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Pess_wCDM_error_comparison.pdf  used on input line 205.
 (pdftex.def)             Requested size: 210.70462pt x 117.93143pt.
-<../plots/Photo_Opt_wCDM_error_comparison.pdf, id=859, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Opt_wCDM_error_comparison.pdf, id=902, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Opt_wCDM_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Opt_wCDM_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Opt_wCDM_error_comparison.pdf  used on input line 211.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
-<../plots/Photo_Pess_wCDM_error_comparison.pdf, id=860, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Pess_wCDM_error_comparison.pdf, id=903, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Pess_wCDM_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Pess_wCDM_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Pess_wCDM_error_comparison.pdf  used on input line 218.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
-<../plots/Spectro_Opt_mnu+w0_error_comparison.pdf, id=863, 1288.94672pt x 721.43875pt>
+<../plots/Spectro_Opt_mnu+w0_error_comparison.pdf, id=906, 1288.94672pt x 721.43875pt>
 File: ../plots/Spectro_Opt_mnu+w0_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Opt_mnu+w0_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Opt_mnu+w0_error_comparison.pdf  used on input line 229.
 (pdftex.def)             Requested size: 210.70462pt x 117.93143pt.
-<../plots/Spectro_Pess_mnu+w0_error_comparison.pdf, id=864, 1288.94672pt x 721.43875pt>
+<../plots/Spectro_Pess_mnu+w0_error_comparison.pdf, id=907, 1288.94672pt x 721.43875pt>
 File: ../plots/Spectro_Pess_mnu+w0_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Pess_mnu+w0_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Pess_mnu+w0_error_comparison.pdf  used on input line 234.
 (pdftex.def)             Requested size: 210.70462pt x 117.93143pt.
-<../plots/Photo_Opt_mnu+w0_error_comparison.pdf, id=865, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Opt_mnu+w0_error_comparison.pdf, id=908, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Opt_mnu+w0_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Opt_mnu+w0_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Opt_mnu+w0_error_comparison.pdf  used on input line 238.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
-<../plots/Photo_Pess_mnu+w0_error_comparison.pdf, id=866, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Pess_mnu+w0_error_comparison.pdf, id=909, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Pess_mnu+w0_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Pess_mnu+w0_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Pess_mnu+w0_error_comparison.pdf  used on input line 243.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
-<../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf, id=869, 1288.83301pt x 722.00679pt>
+<../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf, id=912, 1288.83301pt x 722.00679pt>
 File: ../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf  used on input line 252.
 (pdftex.def)             Requested size: 210.70462pt x 118.0353pt.
-<../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf, id=870, 1288.83301pt x 722.00679pt>
+<../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf, id=913, 1288.83301pt x 722.00679pt>
 File: ../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf  used on input line 257.
 (pdftex.def)             Requested size: 210.70462pt x 118.0353pt.
-<../plots/Photo_Opt_mnu+Neff_error_comparison.pdf, id=871, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Opt_mnu+Neff_error_comparison.pdf, id=914, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Opt_mnu+Neff_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Opt_mnu+Neff_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Opt_mnu+Neff_error_comparison.pdf  used on input line 261.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
-<../plots/Photo_Pess_mnu+Neff_error_comparison.pdf, id=872, 1290.9095pt x 721.43875pt>
+<../plots/Photo_Pess_mnu+Neff_error_comparison.pdf, id=915, 1290.9095pt x 721.43875pt>
 File: ../plots/Photo_Pess_mnu+Neff_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/Photo_Pess_mnu+Neff_error_comparison.pdf>
 Package pdftex.def Info: ../plots/Photo_Pess_mnu+Neff_error_comparison.pdf  used on input line 266.
 (pdftex.def)             Requested size: 210.70462pt x 117.74428pt.
- [51 <../plots/../plots/Test_Precission_Parameter.pdf>] [52 <../plots/Test_Derivative_Method.pdf> <../plots/Test_mnu_Stepsize.pdf> <../plots/Spectro_Opt_wCDM_error_comparison.pdf> <../plots/Spectro_Pess_wCDM_error_comparison.pdf> <../plots/Photo_Opt_wCDM_error_comparison.pdf> <../plots/Photo_Pess_wCDM_error_comparison.pdf>] [53 <../plots/Spectro_Opt_mnu+w0_error_comparison.pdf> <../plots/Spectro_Pess_mnu+w0_error_comparison.pdf> <../plots/Photo_Opt_mnu+w0_error_comparison.pdf> <../plots/Photo_Pess_mnu+w0_error_comparison.pdf> <../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf> <../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf> <../plots/Photo_Opt_mnu+Neff_error_comparison.pdf> <../plots/Photo_Pess_mnu+Neff_error_comparison.pdf>]
-<../plots/S_w0wa_validation.pdf, id=2002, 399.94334pt x 291.33783pt>
+ [53 <../plots/../plots/Test_Precission_Parameter.pdf>] [54 <../plots/Test_Derivative_Method.pdf> <../plots/Test_mnu_Stepsize.pdf> <../plots/Spectro_Opt_wCDM_error_comparison.pdf> <../plots/Spectro_Pess_wCDM_error_comparison.pdf> <../plots/Photo_Opt_wCDM_error_comparison.pdf> <../plots/Photo_Pess_wCDM_error_comparison.pdf>] [55 <../plots/Spectro_Opt_mnu+w0_error_comparison.pdf> <../plots/Spectro_Pess_mnu+w0_error_comparison.pdf> <../plots/Photo_Opt_mnu+w0_error_comparison.pdf> <../plots/Photo_Pess_mnu+w0_error_comparison.pdf> <../plots/Spectro_Opt_mnu+Neff_error_comparison.pdf> <../plots/Spectro_Pess_mnu+Neff_error_comparison.pdf> <../plots/Photo_Opt_mnu+Neff_error_comparison.pdf> <../plots/Photo_Pess_mnu+Neff_error_comparison.pdf>]
+<../plots/S_w0wa_validation.pdf, id=2046, 399.94334pt x 291.33783pt>
 File: ../plots/S_w0wa_validation.pdf Graphic file (type pdf)
 <use ../plots/S_w0wa_validation.pdf>
 Package pdftex.def Info: ../plots/S_w0wa_validation.pdf  used on input line 280.
 (pdftex.def)             Requested size: 210.70462pt x 153.4881pt.
-<../plots/P_w0wa_validation.pdf, id=2003, 400.54599pt x 291.33783pt>
+<../plots/P_w0wa_validation.pdf, id=2047, 400.54599pt x 291.33783pt>
 File: ../plots/P_w0wa_validation.pdf Graphic file (type pdf)
 <use ../plots/P_w0wa_validation.pdf>
 Package pdftex.def Info: ../plots/P_w0wa_validation.pdf  used on input line 285.
 (pdftex.def)             Requested size: 210.70462pt x 153.26138pt.
-<../plots/S_w0M_validation.pdf, id=2006, 399.94334pt x 291.15712pt>
+<../plots/S_w0M_validation.pdf, id=2050, 399.94334pt x 291.15712pt>
 File: ../plots/S_w0M_validation.pdf Graphic file (type pdf)
 <use ../plots/S_w0M_validation.pdf>
 Package pdftex.def Info: ../plots/S_w0M_validation.pdf  used on input line 294.
 (pdftex.def)             Requested size: 210.70462pt x 153.3929pt.
-<../plots/P_w0M_validation.pdf, id=2007, 400.54599pt x 291.15712pt>
+<../plots/P_w0M_validation.pdf, id=2051, 400.54599pt x 291.15712pt>
 File: ../plots/P_w0M_validation.pdf Graphic file (type pdf)
 <use ../plots/P_w0M_validation.pdf>
 Package pdftex.def Info: ../plots/P_w0M_validation.pdf  used on input line 299.
 (pdftex.def)             Requested size: 210.70462pt x 153.16632pt.
-<../plots/S_MN_validation.pdf, id=2010, 399.94334pt x 291.15712pt>
+<../plots/S_MN_validation.pdf, id=2054, 399.94334pt x 291.15712pt>
 File: ../plots/S_MN_validation.pdf Graphic file (type pdf)
 <use ../plots/S_MN_validation.pdf>
 Package pdftex.def Info: ../plots/S_MN_validation.pdf  used on input line 308.
 (pdftex.def)             Requested size: 210.70462pt x 153.3929pt.
-<../plots/P_MN_validation.pdf, id=2011, 399.94334pt x 291.15712pt>
+<../plots/P_MN_validation.pdf, id=2055, 399.94334pt x 291.15712pt>
 File: ../plots/P_MN_validation.pdf Graphic file (type pdf)
 <use ../plots/P_MN_validation.pdf>
 Package pdftex.def Info: ../plots/P_MN_validation.pdf  used on input line 313.
 (pdftex.def)             Requested size: 210.70462pt x 153.3929pt.
- [54] [55 <../plots/S_w0wa_validation.pdf> <../plots/P_w0wa_validation.pdf> <../plots/S_w0M_validation.pdf> <../plots/P_w0M_validation.pdf>]
-<../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf, id=2199, 1290.9095pt x 721.43875pt>
+ [56] [57 <../plots/S_w0wa_validation.pdf> <../plots/P_w0wa_validation.pdf> <../plots/S_w0M_validation.pdf> <../plots/P_w0M_validation.pdf>]
+<../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf, id=2242, 1290.9095pt x 721.43875pt>
 File: ../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf>
 Package pdftex.def Info: ../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf  used on input line 329.
 (pdftex.def)             Requested size: 301.00192pt x 168.21713pt.
-<../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf, id=2200, 833.74358pt x 833.17334pt>
+<../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf, id=2243, 833.74358pt x 833.17334pt>
 File: ../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf Graphic file (type pdf)
 <use ../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf>
 Package pdftex.def Info: ../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf  used on input line 336.
@@ -1003,52 +1013,54 @@ Package pdftex.def Info: ../plots/nonuicance_PmmvPcb_photo_Comparision_contours.
 
 LaTeX Warning: Float too large for page by 48.53453pt on input line 341.
 
-[56 <../plots/S_MN_validation.pdf> <../plots/P_MN_validation.pdf>] [57 <../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf> <../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf>]
-<../plots/P_MN_Pcb_v_Pmm_bias.pdf, id=2406, 399.99403pt x 291.39388pt>
+[58 <../plots/S_MN_validation.pdf> <../plots/P_MN_validation.pdf>] [59 <../plots/cosmopars_PmmvPcb_photo_Comparision_error_comparison.pdf> <../plots/nonuicance_PmmvPcb_photo_Comparision_contours.pdf>]
+<../plots/P_MN_Pcb_v_Pmm_bias.pdf, id=2450, 399.99403pt x 291.39388pt>
 File: ../plots/P_MN_Pcb_v_Pmm_bias.pdf Graphic file (type pdf)
 <use ../plots/P_MN_Pcb_v_Pmm_bias.pdf>
 Package pdftex.def Info: ../plots/P_MN_Pcb_v_Pmm_bias.pdf  used on input line 358.
 (pdftex.def)             Requested size: 387.00153pt x 281.94475pt.
- [58] [59 <../plots/P_MN_Pcb_v_Pmm_bias.pdf>]
-<../plots/P_Halofit_v_P_Hmcode_bias.pdf, id=2470, 399.99403pt x 291.57458pt>
+ [60] [61 <../plots/P_MN_Pcb_v_Pmm_bias.pdf>]
+<../plots/P_Halofit_v_P_Hmcode_bias.pdf, id=2516, 399.99403pt x 291.57458pt>
 File: ../plots/P_Halofit_v_P_Hmcode_bias.pdf Graphic file (type pdf)
 <use ../plots/P_Halofit_v_P_Hmcode_bias.pdf>
 Package pdftex.def Info: ../plots/P_Halofit_v_P_Hmcode_bias.pdf  used on input line 373.
 (pdftex.def)             Requested size: 387.00153pt x 282.1196pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf, id=2473, 1290.9095pt x 721.43875pt>
+ [62]
+<../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf, id=2525, 1290.9095pt x 721.43875pt>
 File: ../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf Graphic file (type pdf)
 <use ../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf>
 Package pdftex.def Info: ../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf  used on input line 381.
 (pdftex.def)             Requested size: 301.00192pt x 168.21713pt.
-<../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf, id=2474, 833.74358pt x 833.17334pt>
+<../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf, id=2526, 833.74358pt x 833.17334pt>
 File: ../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf Graphic file (type pdf)
 <use ../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf>
 Package pdftex.def Info: ../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf  used on input line 388.
 (pdftex.def)             Requested size: 301.00192pt x 300.79396pt.
 
+
 LaTeX Warning: Float too large for page by 2.53453pt on input line 393.
 
-) (./results/results.tex [60] [61 <../plots/P_Halofit_v_P_Hmcode_bias.pdf>] [62 <../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf> <../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf>]
-Chapter 7.
+) (./results/results.tex [63 <../plots/P_Halofit_v_P_Hmcode_bias.pdf>] [64 <../plots/cosmopars_HalofitvHMcode_photo_Comparision_error_comparison.pdf> <../plots/less_HalofitvHMcode_photo_Comparision_contours.pdf>]
+Chapter 8.
 
 Overfull \hbox (19.60962pt too wide) in paragraph at lines 73--86
  [][] 
  []
 
-<../plots/results_trianle.pdf, id=2665, 401.4331pt x 400.08685pt>
+<../plots/results_trianle.pdf, id=2712, 401.4331pt x 400.08685pt>
 File: ../plots/results_trianle.pdf Graphic file (type pdf)
 <use ../plots/results_trianle.pdf>
 Package pdftex.def Info: ../plots/results_trianle.pdf  used on input line 90.
 (pdftex.def)             Requested size: 430.00462pt x 428.58928pt.
-[63
+[65
 
-] [64 <../plots/results_trianle.pdf>]) (./main.bbl [65] [66] [67
+] [66 <../plots/results_trianle.pdf>] [67]) [68]
+Chapter 9.
+(./main.bbl [69
 
-]) [68] (./main.aux)
+] [70
+
+]) [71] (./main.aux (./intro/introduction.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -1056,21 +1068,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 694DF571858D9FB55961996056205EC8;4765.
+(rerunfilecheck)             Checksum: 2855ED6952AE9B4A9BB03B3E23E964AE;5001.
  ) 
 Here is how much of TeX's memory you used:
- 29422 strings out of 478287
- 547395 string characters out of 5849290
- 998297 words of memory out of 5000000
- 46717 multiletter control sequences out of 15000+600000
+ 29479 strings out of 478287
+ 548848 string characters out of 5849290
+ 1000102 words of memory out of 5000000
+ 46752 multiletter control sequences out of 15000+600000
  492983 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,17n,118p,1613b,2183s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on main.pdf (69 pages, 12500797 bytes).
+ 115i,17n,118p,1913b,1372s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on main.pdf (73 pages, 12539417 bytes).
 PDF statistics:
- 2993 PDF objects out of 3580 (max. 8388607)
- 1160 compressed objects within 12 object streams
- 333 named destinations out of 1000 (max. 500000)
- 362 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3052 PDF objects out of 3580 (max. 8388607)
+ 1211 compressed objects within 13 object streams
+ 346 named destinations out of 1000 (max. 500000)
+ 378 words of extra memory for PDF output out of 10000 (max. 10000000)
 

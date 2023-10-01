@@ -1,50 +1,52 @@
 This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+A level-1 auxiliary file: intro/introduction.aux
 The style file: apalike.bst
 Database file #1: main.bib
-Warning--empty journal in 2004A&A...416..853D
+Warning--I didn't find a database entry for "Winther_2019"
+Warning--I didn't find a database entry for "Eisenstein_1998"
 Warning--empty journal in Lewis:2019xzd
-Warning--empty journal in 1974ApJ...187..425P
-You've used 17 entries,
+Warning--empty journal in Raveri:2016leq
+You've used 23 entries,
             1935 wiz_defined-function locations,
-            586 strings with 7054 characters,
-and the built_in function-call counts, 6937 in all, are:
-= -- 652
-> -- 359
-< -- 6
-+ -- 126
-- -- 124
-* -- 630
-:= -- 1251
-add.period$ -- 48
-call.type$ -- 17
-change.case$ -- 143
-chr.to.int$ -- 17
-cite$ -- 20
-duplicate$ -- 229
-empty$ -- 441
-format.name$ -- 147
-if$ -- 1309
+            633 strings with 8227 characters,
+and the built_in function-call counts, 9166 in all, are:
+= -- 862
+> -- 461
+< -- 9
++ -- 160
+- -- 158
+* -- 823
+:= -- 1659
+add.period$ -- 65
+call.type$ -- 23
+change.case$ -- 189
+chr.to.int$ -- 23
+cite$ -- 25
+duplicate$ -- 312
+empty$ -- 592
+format.name$ -- 190
+if$ -- 1735
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 16
-newline$ -- 85
-num.names$ -- 51
-pop$ -- 119
+missing$ -- 22
+newline$ -- 114
+num.names$ -- 69
+pop$ -- 150
 preamble$ -- 1
-purify$ -- 144
+purify$ -- 190
 quote$ -- 0
-skip$ -- 175
+skip$ -- 239
 stack$ -- 0
-substring$ -- 448
-swap$ -- 12
+substring$ -- 580
+swap$ -- 19
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
-warning$ -- 3
-while$ -- 52
+type$ -- 136
+warning$ -- 2
+while$ -- 69
 width$ -- 0
-write$ -- 211
-(There were 3 warnings)
+write$ -- 288
+(There were 4 warnings)
